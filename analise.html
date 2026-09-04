@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Análise gratuita de investimento imobiliário em Orlando para brasileiros. Descubra oportunidades compatíveis com seu orçamento e objetivo.">
+  <title>Invista em Imóveis em Orlando | Análise Gratuita</title>
+  <style>
+    :root{
+      --bg:#08111f; --bg2:#0d1b2f; --card:#ffffff; --text:#172033; --muted:#667085;
+      --accent:#d9b66f; --accent2:#f0d99e; --line:#e5e7eb; --white:#fff; --success:#18794e;
+      --shadow:0 20px 60px rgba(5,18,38,.18); --radius:22px; --max:1160px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);background:#f7f8fa;line-height:1.55}
+    a{text-decoration:none;color:inherit}
+    button,input,select{font:inherit}
+    .container{width:min(var(--max),92%);margin:auto}
+    .topbar{position:absolute;top:0;left:0;right:0;z-index:10;padding:18px 0}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{color:#fff;font-weight:800;letter-spacing:.04em;font-size:15px}
+    .lang-wrap{position:relative}
+    .lang-btn{border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1);color:#fff;padding:10px 13px;border-radius:12px;cursor:pointer;backdrop-filter:blur(8px)}
+    .lang-menu{display:none;position:absolute;right:0;top:48px;background:#fff;color:#172033;border-radius:12px;box-shadow:var(--shadow);overflow:hidden;min-width:150px}
+    .lang-menu button{display:block;width:100%;border:0;background:#fff;padding:11px 14px;text-align:left;cursor:pointer}
+    .lang-menu button:hover{background:#f2f4f7}
+    .lang-menu.open{display:block}
+    .hero{position:relative;overflow:hidden;background:radial-gradient(circle at 80% 20%,#20446f 0,#122c4d 28%,#08111f 65%);color:#fff;padding:120px 0 80px}
+    .hero:before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,rgba(8,17,31,.97),rgba(8,17,31,.65),rgba(8,17,31,.22));pointer-events:none}
+    .hero .container{position:relative;z-index:1}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:center}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;color:var(--accent2);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+    h1{font-size:clamp(40px,5vw,68px);line-height:1.02;margin:16px 0 20px;letter-spacing:-.04em}
+    .hero p{font-size:19px;color:#dce5f0;max-width:650px;margin:0 0 30px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:14px;padding:15px 20px;font-weight:800;cursor:pointer;transition:.2s}
+    .btn-primary{background:var(--accent);color:#15110a}.btn-primary:hover{transform:translateY(-1px);filter:brightness(1.05)}
+    .btn-ghost{border:1px solid rgba(255,255,255,.25);color:#fff;background:rgba(255,255,255,.08)}
+    .trust{display:flex;gap:18px;flex-wrap:wrap;margin-top:24px;color:#cbd6e4;font-size:13px}
+    .form-card{background:#fff;color:var(--text);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}
+    .form-card h2{margin:0 0 8px;font-size:25px}.form-card p{color:var(--muted);margin-top:0}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    label{font-size:13px;font-weight:700;display:block;margin:10px 0 6px}
+    input,select{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px 13px;background:#fff;outline:none}
+    input:focus,select:focus{border-color:#93a7bd;box-shadow:0 0 0 3px rgba(29,78,121,.08)}
+    .small{font-size:12px;color:var(--muted)}
+    .check{display:flex;gap:9px;align-items:flex-start;margin-top:14px;font-size:12px;color:var(--muted)}
+    .check input{width:auto;margin-top:3px}
+    .section{padding:82px 0}.section.alt{background:#eef2f6}
+    .section h2{font-size:clamp(30px,4vw,44px);line-height:1.1;margin:0 0 14px;letter-spacing:-.03em}
+    .section-intro{color:var(--muted);max-width:680px;font-size:17px}
+    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px}
+    .card{background:#fff;border:1px solid #e9edf2;border-radius:18px;padding:22px;box-shadow:0 8px 30px rgba(10,25,44,.05)}
+    .card h3{margin:12px 0 8px}.card p{color:var(--muted);margin:0}
+    .icon{width:42px;height:42px;border-radius:12px;background:#f4ebd4;display:grid;place-items:center;font-size:20px}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+    .step{background:#fff;border-radius:18px;padding:24px;border:1px solid #e9edf2}
+    .num{width:34px;height:34px;border-radius:50%;background:var(--bg);color:#fff;display:grid;place-items:center;font-weight:800}
+    .cta{background:linear-gradient(120deg,#091322,#173659);color:#fff;border-radius:28px;padding:52px}
+    .cta p{color:#ccd6e3;max-width:650px}
+    footer{background:#07101c;color:#b9c4d1;padding:28px 0;font-size:13px}
+    .hidden{display:none!important}
+    .success{padding:18px;border-radius:14px;background:#ecfdf3;color:var(--success);border:1px solid #b7ebcf;font-weight:700}
+    .error{color:#b42318;font-size:13px;margin-top:8px}
+    @media (max-width:900px){
+      .hero-grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr}
+    }
+    @media (max-width:560px){
+      .hero{padding-top:105px}.grid2,.cards{grid-template-columns:1fr}.form-card{padding:20px}.cta{padding:32px 22px}
+      h1{font-size:42px}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <div class="brand">ORLANDO INVEST</div>
+      <div class="lang-wrap">
+        <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">🌐 PT</button>
+        <div class="lang-menu" id="langMenu" role="menu">
+          <button data-lang="pt">🇧🇷 Português</button>
+          <button data-lang="en">🇺🇸 English</button>
+          <button data-lang="es">🇪🇸 Español</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow" data-i18n="eyebrow">ANÁLISE GRATUITA • ATENDIMENTO EM PORTUGUÊS</div>
+          <h1 data-i18n="hero_title">Invista em imóveis em Orlando com uma estratégia feita para o seu perfil.</h1>
+          <p data-i18n="hero_subtitle">Descubra oportunidades compatíveis com seu orçamento, objetivo e prazo. Receba uma análise inicial sem compromisso.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#leadForm" data-i18n="hero_cta">Quero minha análise gratuita</a>
+            <a class="btn btn-ghost" href="#how" data-i18n="hero_secondary">Como funciona</a>
+          </div>
+          <div class="trust">
+            <span>✓ <span data-i18n="trust1">Atendimento em português</span></span>
+            <span>✓ <span data-i18n="trust2">Sem compromisso</span></span>
+            <span>✓ <span data-i18n="trust3">Perfil personalizado</span></span>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <div id="formIntro">
+            <h2 data-i18n="form_title">Descubra seu perfil de investimento</h2>
+            <p data-i18n="form_subtitle">Responda algumas perguntas e receba oportunidades mais alinhadas ao que você procura.</p>
+          </div>
+          <form id="leadForm">
+            <div class="grid2">
+              <div><label data-i18n="name_label">Nome</label><input id="name" required placeholder="Seu nome"></div>
+              <div><label data-i18n="whatsapp_label">WhatsApp</label><input id="whatsapp" required placeholder="+55 (11) 99999-9999"></div>
+            </div>
+            <div><label data-i18n="email_label">E-mail</label><input id="email" type="email" required placeholder="voce@email.com"></div>
+            <div><label data-i18n="goal_label">Seu principal objetivo</label>
+              <select id="goal" required>
+                <option value="">Selecione</option><option value="renda">Gerar renda</option><option value="valorizacao">Valorização patrimonial</option><option value="ferias">Casa de férias + investimento</option><option value="morar">Morar nos EUA no futuro</option><option value="avaliando">Ainda estou avaliando</option>
+              </select>
+            </div>
+            <div class="grid2">
+              <div><label data-i18n="budget_label">Faixa de investimento</label>
+                <select id="budget" required>
+                  <option value="">Selecione</option><option value="750">Acima de US$ 750 mil</option><option value="500">US$ 500–750 mil</option><option value="350">US$ 350–500 mil</option><option value="200">US$ 200–350 mil</option><option value="100">Até US$ 200 mil</option><option value="nao-sei">Ainda não sei</option>
+                </select>
+              </div>
+              <div><label data-i18n="timeline_label">Quando pretende investir?</label>
+                <select id="timeline" required>
+                  <option value="">Selecione</option><option value="90">Próximos 90 dias</option><option value="180">3–6 meses</option><option value="365">6–12 meses</option><option value="long">Mais de 12 meses</option><option value="pesquisa">Apenas pesquisando</option>
+                </select>
+              </div>
+            </div>
+            <div class="grid2">
+              <div><label data-i18n="capital_label">Tem capital disponível?</label>
+                <select id="capital" required><option value="">Selecione</option><option value="sim">Sim</option><option value="parcial">Parcialmente</option><option value="financiamento">Buscando financiamento</option><option value="nao">Ainda formando capital</option></select>
+              </div>
+              <div><label data-i18n="region_label">Região de interesse</label>
+                <select id="region" required><option value="">Selecione</option><option>Orlando</option><option>Lake Nona</option><option>Kissimmee</option><option>Davenport</option><option>Winter Garden</option><option>Ainda não sei</option></select>
+              </div>
+            </div>
+            <label class="check">
+              <input id="consent" type="checkbox" required>
+              <span data-i18n="consent">Aceito receber contato sobre oportunidades, conteúdos e informações relacionadas a imóveis nos EUA. Posso cancelar a qualquer momento.</span>
+            </label>
+            <button class="btn btn-primary" style="width:100%;margin-top:16px" type="submit" data-i18n="form_cta">Receber minha análise</button>
+            <div id="formError" class="error"></div>
+          </form>
+          <div id="successBox" class="success hidden"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="eyebrow" style="color:#8a6c31" data-i18n="why_eyebrow">POR QUE ANALISAR ORLANDO?</div>
+        <h2 data-i18n="why_title">Uma estratégia imobiliária começa pelo seu perfil.</h2>
+        <p class="section-intro" data-i18n="why_intro">Antes de escolher um imóvel, vale analisar objetivo, orçamento, localização, custos e estratégia de uso ou renda.</p>
+        <div class="cards">
+          <div class="card"><div class="icon">💵</div><h3 data-i18n="card1_title">Renda</h3><p data-i18n="card1_text">Avalie imóveis e estratégias com foco em geração de receita.</p></div>
+          <div class="card"><div class="icon">📈</div><h3 data-i18n="card2_title">Patrimônio</h3><p data-i18n="card2_text">Considere localização, liquidez e potencial de valorização.</p></div>
+          <div class="card"><div class="icon">🏡</div><h3 data-i18n="card3_title">Casa de férias</h3><p data-i18n="card3_text">Combine uso pessoal com uma estratégia imobiliária bem planejada.</p></div>
+          <div class="card"><div class="icon">🇺🇸</div><h3 data-i18n="card4_title">Diversificação</h3><p data-i18n="card4_text">Explore uma alternativa internacional para diversificar patrimônio.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="how">
+      <div class="container">
+        <div class="eyebrow" style="color:#8a6c31">3 PASSOS</div>
+        <h2 data-i18n="how_title">Como funciona</h2>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><h3 data-i18n="step1_title">Conte sobre você</h3><p class="section-intro" data-i18n="step1_text">Você informa objetivo, orçamento e prazo.</p></div>
+          <div class="step"><div class="num">2</div><h3 data-i18n="step2_title">Analisamos seu perfil</h3><p class="section-intro" data-i18n="step2_text">Seu lead recebe uma classificação para priorizar atendimento e oportunidades relevantes.</p></div>
+          <div class="step"><div class="num">3</div><h3 data-i18n="step3_title">Falamos com você</h3><p class="section-intro" data-i18n="step3_text">Um especialista entra em contato para apresentar possibilidades compatíveis.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta">
+          <h2 data-i18n="cta_title">Pronto para descobrir suas possibilidades em Orlando?</h2>
+          <p data-i18n="cta_text">Faça a análise gratuita e receba uma conversa personalizada sobre imóveis, estratégias e próximos passos.</p>
+          <a class="btn btn-primary" href="#leadForm" data-i18n="cta_button">Quero receber minha análise</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div>© <span id="year"></span> Orlando Invest. <span data-i18n="footer">Informações para fins educacionais e comerciais; oportunidades e resultados variam conforme imóvel, mercado e perfil do investidor.</span></div>
+    </div>
+  </footer>
+
+<script>
+const translations = {
+  pt: {
+    eyebrow:"ANÁLISE GRATUITA • ATENDIMENTO EM PORTUGUÊS",
+    hero_title:"Invista em imóveis em Orlando com uma estratégia feita para o seu perfil.",
+    hero_subtitle:"Descubra oportunidades compatíveis com seu orçamento, objetivo e prazo. Receba uma análise inicial sem compromisso.",
+    hero_cta:"Quero minha análise gratuita", hero_secondary:"Como funciona",
+    trust1:"Atendimento em português", trust2:"Sem compromisso", trust3:"Perfil personalizado",
+    form_title:"Descubra seu perfil de investimento", form_subtitle:"Responda algumas perguntas e receba oportunidades mais alinhadas ao que você procura.",
+    name_label:"Nome", whatsapp_label:"WhatsApp", email_label:"E-mail", goal_label:"Seu principal objetivo",
+    budget_label:"Faixa de investimento", timeline_label:"Quando pretende investir?", capital_label:"Tem capital disponível?", region_label:"Região de interesse",
+    consent:"Aceito receber contato sobre oportunidades, conteúdos e informações relacionadas a imóveis nos EUA. Posso cancelar a qualquer momento.",
+    form_cta:"Receber minha análise", why_eyebrow:"POR QUE ANALISAR ORLANDO?", why_title:"Uma estratégia imobiliária começa pelo seu perfil.",
+    why_intro:"Antes de escolher um imóvel, vale analisar objetivo, orçamento, localização, custos e estratégia de uso ou renda.",
+    card1_title:"Renda",card1_text:"Avalie imóveis e estratégias com foco em geração de receita.",
+    card2_title:"Patrimônio",card2_text:"Considere localização, liquidez e potencial de valorização.",
+    card3_title:"Casa de férias",card3_text:"Combine uso pessoal com uma estratégia imobiliária bem planejada.",
+    card4_title:"Diversificação",card4_text:"Explore uma alternativa internacional para diversificar patrimônio.",
+    how_title:"Como funciona",step1_title:"Conte sobre você",step1_text:"Você informa objetivo, orçamento e prazo.",
+    step2_title:"Analisamos seu perfil",step2_text:"Seu lead recebe uma classificação para priorizar atendimento e oportunidades relevantes.",
+    step3_title:"Falamos com você",step3_text:"Um especialista entra em contato para apresentar possibilidades compatíveis.",
+    cta_title:"Pronto para descobrir suas possibilidades em Orlando?",cta_text:"Faça a análise gratuita e receba uma conversa personalizada sobre imóveis, estratégias e próximos passos.",
+    cta_button:"Quero receber minha análise",
+    footer:"Informações para fins educacionais e comerciais; oportunidades e resultados variam conforme imóvel, mercado e perfil do investidor.",
+    success:"Obrigado! Seu perfil foi recebido. Um especialista deverá entrar em contato em breve.",
+    error:"Preencha todos os campos obrigatórios e aceite receber o contato."
+  },
+  en: {
+    eyebrow:"FREE ANALYSIS • ENGLISH SUPPORT", hero_title:"Invest in Orlando real estate with a strategy built around your profile.",
+    hero_subtitle:"Discover opportunities aligned with your budget, goals and timeline. Receive an initial analysis with no commitment.",
+    hero_cta:"Get my free analysis", hero_secondary:"How it works", trust1:"Portuguese support available", trust2:"No commitment", trust3:"Personalized profile",
+    form_title:"Discover your investment profile", form_subtitle:"Answer a few questions and receive opportunities that better match what you are looking for.",
+    name_label:"Name", whatsapp_label:"WhatsApp", email_label:"Email", goal_label:"Main objective",
+    budget_label:"Investment range", timeline_label:"When do you plan to invest?", capital_label:"Do you have capital available?", region_label:"Area of interest",
+    consent:"I agree to receive contact about opportunities, content and information related to U.S. real estate. I may unsubscribe at any time.",
+    form_cta:"Get my analysis", why_eyebrow:"WHY ORLANDO?", why_title:"A real estate strategy starts with your profile.",
+    why_intro:"Before choosing a property, it is important to evaluate your goals, budget, location, costs and rental or personal-use strategy.",
+    card1_title:"Income",card1_text:"Evaluate properties and strategies focused on potential income generation.",
+    card2_title:"Wealth",card2_text:"Consider location, liquidity and potential appreciation.",
+    card3_title:"Vacation home",card3_text:"Combine personal use with a well-planned real estate strategy.",
+    card4_title:"Diversification",card4_text:"Explore an international option to diversify your assets.",
+    how_title:"How it works",step1_title:"Tell us about you",step1_text:"Share your objective, budget and timeline.",
+    step2_title:"We analyze your profile",step2_text:"Your lead receives a score to prioritize relevant follow-up and opportunities.",
+    step3_title:"We contact you",step3_text:"A specialist reaches out to discuss possibilities that fit your profile.",
+    cta_title:"Ready to explore your Orlando options?",cta_text:"Complete the free analysis and receive a personalized conversation about properties, strategies and next steps.",
+    cta_button:"Get my analysis",
+    footer:"For educational and commercial information only; opportunities and results vary by property, market and investor profile.",
+    success:"Thank you! Your profile has been received. A specialist should contact you soon.", error:"Please complete all required fields and accept contact permission."
+  },
+  es: {
+    eyebrow:"ANÁLISIS GRATUITO • ATENCIÓN EN PORTUGUÉS", hero_title:"Invierte en propiedades en Orlando con una estrategia adaptada a tu perfil.",
+    hero_subtitle:"Descubre oportunidades compatibles con tu presupuesto, objetivo y plazo. Recibe un análisis inicial sin compromiso.",
+    hero_cta:"Quiero mi análisis gratuito", hero_secondary:"Cómo funciona", trust1:"Atención en portugués", trust2:"Sin compromiso", trust3:"Perfil personalizado",
+    form_title:"Descubre tu perfil de inversión", form_subtitle:"Responde algunas preguntas y recibe oportunidades más alineadas con lo que buscas.",
+    name_label:"Nombre", whatsapp_label:"WhatsApp", email_label:"Correo electrónico", goal_label:"Objetivo principal",
+    budget_label:"Rango de inversión", timeline_label:"¿Cuándo planeas invertir?", capital_label:"¿Tienes capital disponible?", region_label:"Región de interés",
+    consent:"Acepto recibir contacto sobre oportunidades, contenidos e información relacionada con propiedades en EE. UU. Puedo cancelar en cualquier momento.",
+    form_cta:"Recibir mi análisis", why_eyebrow:"¿POR QUÉ ANALIZAR ORLANDO?", why_title:"Una estrategia inmobiliaria comienza con tu perfil.",
+    why_intro:"Antes de elegir una propiedad, conviene analizar objetivo, presupuesto, ubicación, costos y estrategia de uso o renta.",
+    card1_title:"Ingresos",card1_text:"Evalúa propiedades y estrategias enfocadas en la posible generación de ingresos.",
+    card2_title:"Patrimonio",card2_text:"Considera ubicación, liquidez y potencial de valorización.",
+    card3_title:"Casa de vacaciones",card3_text:"Combina uso personal con una estrategia inmobiliaria bien planificada.",
+    card4_title:"Diversificación",card4_text:"Explora una alternativa internacional para diversificar tu patrimonio.",
+    how_title:"Cómo funciona",step1_title:"Cuéntanos sobre ti",step1_text:"Indica tu objetivo, presupuesto y plazo.",
+    step2_title:"Analizamos tu perfil",step2_text:"Tu lead recibe una clasificación para priorizar el contacto y las oportunidades relevantes.",
+    step3_title:"Hablamos contigo",step3_text:"Un especialista se comunica para presentar posibilidades compatibles.",
+    cta_title:"¿Listo para descubrir tus opciones en Orlando?",cta_text:"Completa el análisis gratuito y recibe una conversación personalizada sobre propiedades, estrategias y próximos pasos.",
+    cta_button:"Quiero recibir mi análisis",
+    footer:"Información con fines educativos y comerciales; las oportunidades y resultados varían según propiedad, mercado y perfil del inversor.",
+    success:"¡Gracias! Recibimos tu perfil. Un especialista debería comunicarse contigo pronto.", error:"Completa todos los campos obligatorios y acepta recibir contacto."
+  }
+};
+
+let currentLang = "pt";
+const langBtn = document.getElementById("langBtn");
+const langMenu = document.getElementById("langMenu");
+
+langBtn.addEventListener("click", () => {
+  langMenu.classList.toggle("open");
+  langBtn.setAttribute("aria-expanded", langMenu.classList.contains("open"));
+});
+
+document.addEventListener("click", (e) => {
+  if(!e.target.closest(".lang-wrap")) langMenu.classList.remove("open");
+});
+
+document.querySelectorAll("[data-lang]").forEach(btn => {
+  btn.addEventListener("click", () => setLanguage(btn.dataset.lang));
+});
+
+function setLanguage(lang){
+  currentLang = lang;
+  document.documentElement.lang = lang === "pt" ? "pt-BR" : lang;
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.dataset.i18n;
+    if(translations[lang][key]) el.textContent = translations[lang][key];
+  });
+  langBtn.textContent = lang === "pt" ? "🌐 PT" : lang === "en" ? "🌐 EN" : "🌐 ES";
+  langMenu.classList.remove("open");
+}
+
+function calculateLeadScore(){
+  let score = 0;
+  const timeline = document.getElementById("timeline").value;
+  const budget = document.getElementById("budget").value;
+  const goal = document.getElementById("goal").value;
+  const capital = document.getElementById("capital").value;
+
+  if(timeline === "90") score += 30;
+  else if(timeline === "180") score += 20;
+  else if(timeline === "365") score += 10;
+  else if(timeline === "long") score += 5;
+
+  if(budget === "750") score += 30;
+  else if(budget === "500") score += 25;
+  else if(budget === "350") score += 20;
+  else if(budget === "200") score += 15;
+  else if(budget === "100") score += 5;
+
+  if(["renda","valorizacao"].includes(goal)) score += 15;
+  else if(["ferias","morar"].includes(goal)) score += 10;
+
+  if(capital === "sim") score += 15;
+  else if(capital === "parcial") score += 10;
+  else if(capital === "financiamento") score += 5;
+
+  return score;
+}
+
+function getLeadTemperature(score){
+  return score >= 80 ? "HOT" : score >= 55 ? "WARM" : "COLD";
+}
+
+document.getElementById("leadForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const error = document.getElementById("formError");
+  const t = translations[currentLang];
+
+  if(!this.checkValidity()){
+    error.textContent = t.error;
+    return;
+  }
+
+  const score = calculateLeadScore();
+  const temperature = getLeadTemperature(score);
+
+  const lead = {
+    timestamp: new Date().toISOString(),
+    language: currentLang,
+    name: document.getElementById("name").value.trim(),
+    whatsapp: document.getElementById("whatsapp").value.trim(),
+    email: document.getElementById("email").value.trim(),
+    goal: document.getElementById("goal").value,
+    budget: document.getElementById("budget").value,
+    timeline: document.getElementById("timeline").value,
+    capital: document.getElementById("capital").value,
+    region: document.getElementById("region").value,
+    score,
+    temperature
+  };
+
+  /* Replace this block with your CRM/webhook endpoint.
+     Example:
+     fetch("https://SEU-ENDPOINT.com/leads", {
+       method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(lead)
+     })
+  */
+  const leads = JSON.parse(localStorage.getItem("orlandoLeads") || "[]");
+  leads.push(lead);
+  localStorage.setItem("orlandoLeads", JSON.stringify(leads));
+
+  this.classList.add("hidden");
+  document.getElementById("formIntro").classList.add("hidden");
+  const box = document.getElementById("successBox");
+  box.classList.remove("hidden");
+  box.textContent = t.success + ` (${temperature})`;
+
+  // Optional WhatsApp routing. Replace with the company's number:
+  const companyWhatsApp = "15555555555";
+  const message = encodeURIComponent(
+    `Olá! Meu nome é ${lead.name}. Preenchi a análise de investimento em Orlando. Meu perfil foi classificado como ${temperature}. Meu objetivo é ${lead.goal} e minha faixa de investimento é ${lead.budget}.`
+  );
+  // Uncomment to redirect immediately:
+  // window.location.href = `https://wa.me/${companyWhatsApp}?text=${message}`;
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
