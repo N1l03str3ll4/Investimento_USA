@@ -1,0 +1,78 @@
+{
+  "purchase": {
+    "hr1": {
+      "name": "30-Yr Fixed Conventional",
+      "rate": 6.975, "apr": 7.012, "points": 0.5,
+      "trend": "up", "trendValue": 0.125,
+      "minFico": 620, "minDown": "3%+"
+    },
+    "hr2": {
+      "name": "15-Yr Fixed Conventional",
+      "rate": 6.125, "apr": 6.254, "points": 0.375,
+      "trend": "down", "trendValue": 0.125,
+      "minFico": 620, "minDown": "3%+"
+    },
+    "hr3": {
+      "name": "FHA 30-Year",
+      "rate": 6.625, "apr": 7.756, "points": 0.25,
+      "trend": "flat", "trendValue": 0,
+      "minFico": 580, "minDown": "3.5%"
+    },
+    "hr4": {
+      "name": "VA 30-Year",
+      "rate": 6.250, "apr": 6.511, "points": 0.0,
+      "trend": "down", "trendValue": 0.250,
+      "minFico": 580, "minDown": "0%"
+    },
+    "hr5": {
+      "name": "DSCR 30-Year",
+      "rate": 7.125, "apr": 7.248, "points": 0.625,
+      "trend": "up", "trendValue": 0.125,
+      "minFico": 700, "minDown": "20%+"
+    },
+    "hr6": {
+      "name": "ARM 5/1",
+      "rate": 6.375, "apr": 7.112, "points": 0.25,
+      "trend": "flat", "trendValue": 0,
+      "minFico": 620, "minDown": "Caps: 5/2/5"
+    }
+  },
+  "refinance": {
+    "hr1": {
+      "name": "30-Yr Fixed Conventional",
+      "rate": 7.125, "apr": 7.265, "points": 0.5,
+      "trend": "up", "trendValue": 0.250,
+      "minFico": 620, "minDown": "3%+"
+    },
+    "hr2": {
+      "name": "15-Yr Fixed Conventional",
+      "rate": 6.375, "apr": 6.511, "points": 0.375,
+      "trend": "flat", "trendValue": 0,
+      "minFico": 620, "minDown": "3%+"
+    },
+    "hr3": {
+      "name": "FHA 30-Year",
+      "rate": 6.875, "apr": 8.012, "points": 0.25,
+      "trend": "up", "trendValue": 0.125,
+      "minFico": 580, "minDown": "3.5%"
+    },
+    "hr4": {
+      "name": "VA 30-Year",
+      "rate": 6.500, "apr": 6.755, "points": 0.0,
+      "trend": "down", "trendValue": 0.125,
+      "minFico": 580, "minDown": "0%"
+    },
+    "hr5": {
+      "name": "DSCR 30-Year",
+      "rate": 7.375, "apr": 7.498, "points": 0.625,
+      "trend": "up", "trendValue": 0.250,
+      "minFico": 700, "minDown": "20%+"
+    },
+    "hr6": {
+      "name": "ARM 5/1",
+      "rate": 6.625, "apr": 7.362, "points": 0.25,
+      "trend": "flat", "trendValue": 0,
+      "minFico": 620, "minDown": "Caps: 5/2/5"
+    }
+  }
+}
