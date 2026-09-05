@@ -373,7 +373,7 @@
         <ul>
           <li><a href="tel:+19495197902">+1 (949) 519-7902</a></li>
           <li><a href="https://wa.me/19495197902" target="_blank" rel="noopener">WhatsApp</a></li>
-          <li><a href="mailto:nestrella@acrisuremortgage.com">nestrella@acrisuremortgage.com</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#b8d6ddcbcccaddd4d4d9f8d9dbcad1cbcdcaddd5d7caccdfd9dfdd96dbd7d5"><span class="__cf_email__" data-cfemail="c2aca7b1b6b0a7aeaea382a3a1b0abb1b7b0a7afadb0b6a5a3a5a7eca1adaf">[email&#160;protected]</span></a></li>
           <li><a href="https://www.google.com/maps/dir/?api=1&destination=132+W+Plant+St+Suite+210+Winter+Garden+FL+34787" target="_blank" rel="noopener" data-i18n="footer_office">132 W. Plant St, Suite 210 · Winter Garden, FL 34787</a></li>
         </ul>
       </div>
@@ -403,7 +403,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ══════════════════════════════════════════════════════════════
    CONFIGURAÇÃO DE ENVIO DOS LEADS
    ------------------------------------------------------------
@@ -413,11 +413,49 @@
    Enquanto estiver vazia (""), os leads ficam salvos apenas
    neste navegador (localStorage), como antes.
    ══════════════════════════════════════════════════════════════ */
-const LEAD_ENDPOINT = "";   // ex.: "https://formspree.io/f/xxxxxxx"
+const LEAD_ENDPOINT = "https://nexlead.duckdns.org/api/webhooks/analise-orlando";   // troque pelo URL real do CRM
 
 /* Roteamento opcional p/ WhatsApp após o envio (descomente para usar): */
 const companyWhatsApp = "19495197902";
 // const WHATSAPP_REDIRECT = true;
+
+
+/* Captura de origem do Google Ads / UTMs
+   - Guarda por 30 dias porque o visitante pode navegar antes de enviar.
+   - Envia junto com o lead: gclid, gbraid, wbraid, utm_campaign, keyword etc. */
+const TRACK_KEYS = ["gclid", "gbraid", "wbraid", "campaign", "adgroup", "keyword", "matchtype", "device", "campaignid", "adgroupid", "creative", "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+const TRACK_STORAGE_KEY = "estrella-ad-tracking";
+function captureTracking(){
+  try {
+    const qs = new URLSearchParams(window.location.search);
+    const saved = JSON.parse(localStorage.getItem(TRACK_STORAGE_KEY) || "{}");
+    let changed = false;
+    TRACK_KEYS.forEach(k => {
+      const v = qs.get(k);
+      if (v) { saved[k] = v; changed = true; }
+    });
+    if (changed) {
+      saved._ts = Date.now();
+      localStorage.setItem(TRACK_STORAGE_KEY, JSON.stringify(saved));
+    }
+  } catch(e) { console.warn("Não foi possível salvar rastreamento:", e); }
+}
+function getTrackingData(){
+  const out = {};
+  try {
+    const qs = new URLSearchParams(window.location.search);
+    const saved = JSON.parse(localStorage.getItem(TRACK_STORAGE_KEY) || "{}");
+    if (saved._ts && Date.now() - saved._ts > 30 * 24 * 60 * 60 * 1000) {
+      localStorage.removeItem(TRACK_STORAGE_KEY);
+    }
+    TRACK_KEYS.forEach(k => {
+      const v = qs.get(k) || saved[k];
+      if (v) out[k] = v;
+    });
+  } catch(e) {}
+  return out;
+}
+captureTracking();
 
 /* ════════════════ i18n ════════════════ */
 const T = {
@@ -631,6 +669,7 @@ document.getElementById("leadForm").addEventListener("submit", async function(e)
 
   const score = calculateLeadScore();
   const temperature = getLeadTemperature(score);
+  const tracking = getTrackingData();
   const lead = {
     timestamp: new Date().toISOString(),
     language: currentLang,
@@ -643,7 +682,14 @@ document.getElementById("leadForm").addEventListener("submit", async function(e)
     timeline: document.getElementById("timeline").value,
     capital: document.getElementById("capital").value,
     region: document.getElementById("region").value,
-    score, temperature
+    consent: document.getElementById("consent").checked ? "1" : "",
+    landing_url: window.location.href,
+    referrer: document.referrer,
+    ...tracking,
+    score,
+    temperature,
+    score_landing: score,
+    temperature_landing: temperature
   };
 
   /* Sempre salva localmente (backup) */
@@ -655,6 +701,7 @@ document.getElementById("leadForm").addEventListener("submit", async function(e)
 
   /* Envia para o endpoint configurado (se houver) */
   let sent = false;
+  let crmResult = null;
   if (LEAD_ENDPOINT){
     try {
       const res = await fetch(LEAD_ENDPOINT, {
@@ -662,8 +709,18 @@ document.getElementById("leadForm").addEventListener("submit", async function(e)
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
         body: JSON.stringify(lead)
       });
-      sent = res.ok;
-    } catch(e){ console.error("Falha no envio do lead:", e); }
+      crmResult = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(crmResult.error || "Falha ao enviar para o CRM.");
+      sent = true;
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: "lead_crm", lead_id: crmResult.id, lead_score: crmResult.score });
+      try { localStorage.removeItem(TRACK_STORAGE_KEY); } catch(e){}
+    } catch(e){
+      console.error("Falha no envio do lead:", e);
+      err.style.display = "block";
+      err.textContent = (e && e.message) ? e.message : "Não foi possível enviar agora. Tente novamente em instantes.";
+      return;
+    }
   } else {
     console.info("[LEAD salvo localmente] Configure LEAD_ENDPOINT no topo do script para enviar ao CRM. Lead:", lead);
   }
@@ -695,5 +752,5 @@ document.getElementById("leadForm").addEventListener("submit", async function(e)
   }
 })();
 </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3687a79bb9b1921',t:'MTc4ODY0NTMyOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
