@@ -77,6 +77,13 @@
   label{display:block;font-size:.78rem;font-weight:700;color:var(--navy);margin-bottom:.35rem}
   .form-input,.form-select{width:100%;border:1px solid #dde3ec;border-radius:10px;padding:.72rem .8rem;background:var(--white);outline:none;color:var(--text-dark);transition:border .15s}
   .form-input:focus,.form-select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,152,58,.14)}
+  .phone-combo{display:grid;grid-template-columns:minmax(138px,.72fr) 1fr;gap:.5rem;align-items:start}
+  .phone-combo.custom{grid-template-columns:minmax(138px,.72fr) minmax(88px,.36fr) 1fr}
+  .phone-country,.phone-dial{font-size:.83rem}
+  .phone-dial{display:none;text-align:center}
+  .phone-combo.custom .phone-dial{display:block}
+  .phone-hint{font-size:.72rem;color:var(--text-muted);line-height:1.45;margin-top:.36rem}
+  .phone-hint strong{color:var(--navy);font-weight:700}
   .check{display:flex;gap:.6rem;align-items:flex-start;margin:1rem 0 0;font-size:.74rem;color:var(--text-muted);line-height:1.55}
   .check input{width:auto;margin-top:.2rem;accent-color:var(--gold)}
   .btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--gold);color:var(--navy);font-weight:700;border:0;border-radius:11px;padding:.95rem 1.4rem;cursor:pointer;transition:.2s;width:100%;margin-top:1.1rem;font-size:1rem}
@@ -143,6 +150,7 @@
   @media(max-width:640px){
     .hero{padding-top:130px}
     .grid2,.cards{grid-template-columns:1fr}
+    .phone-combo,.phone-combo.custom{grid-template-columns:1fr}
     .form-card{padding:1.4rem}
     .cta-band{padding:2rem 1.3rem}
     .footer-grid{grid-template-columns:1fr}
@@ -245,7 +253,37 @@
       <form id="leadForm" novalidate>
         <div class="grid2">
           <div class="form-group"><label for="name" data-i18n="name_label">Nome</label><input class="form-input" id="name" required placeholder="Seu nome"></div>
-          <div class="form-group"><label for="whatsapp" data-i18n="whatsapp_label">WhatsApp</label><input class="form-input" id="whatsapp" required placeholder="+55 (11) 99999-9999"></div>
+          <div class="form-group">
+            <label for="whatsapp" data-i18n="whatsapp_label">WhatsApp</label>
+            <div class="phone-combo" id="phoneCombo">
+              <select class="form-select phone-country" id="phoneCountry" aria-label="País do WhatsApp">
+                <option value="BR" selected>🇧🇷 Brasil +55</option>
+                <option value="US">🇺🇸 Estados Unidos +1</option>
+                <option value="CA">🇨🇦 Canadá +1</option>
+                <option value="PT">🇵🇹 Portugal +351</option>
+                <option value="ES">🇪🇸 Espanha +34</option>
+                <option value="MX">🇲🇽 México +52</option>
+                <option value="CO">🇨🇴 Colômbia +57</option>
+                <option value="AR">🇦🇷 Argentina +54</option>
+                <option value="CL">🇨🇱 Chile +56</option>
+                <option value="PE">🇵🇪 Peru +51</option>
+                <option value="VE">🇻🇪 Venezuela +58</option>
+                <option value="PY">🇵🇾 Paraguai +595</option>
+                <option value="UY">🇺🇾 Uruguai +598</option>
+                <option value="BO">🇧🇴 Bolívia +591</option>
+                <option value="EC">🇪🇨 Equador +593</option>
+                <option value="DO">🇩🇴 Rep. Dominicana +1</option>
+                <option value="PA">🇵🇦 Panamá +507</option>
+                <option value="CR">🇨🇷 Costa Rica +506</option>
+                <option value="GT">🇬🇹 Guatemala +502</option>
+                <option value="GB">🇬🇧 Reino Unido +44</option>
+                <option value="OTHER">🌐 Outro país</option>
+              </select>
+              <input class="form-input phone-dial" id="phoneCustomDial" inputmode="numeric" autocomplete="tel-country-code" placeholder="+ código" aria-label="Código do país">
+              <input class="form-input phone-input" id="whatsapp" type="tel" inputmode="tel" autocomplete="tel-national" required placeholder="(11) 99999-9999">
+            </div>
+            <div class="phone-hint" id="phoneHint">Escolha o país e digite o WhatsApp com DDD.</div>
+          </div>
         </div>
         <div class="form-group"><label for="email" data-i18n="email_label">E-mail</label><input class="form-input" id="email" type="email" required placeholder="voce@email.com"></div>
         <div class="form-group"><label for="goal" data-i18n="goal_label">Seu principal objetivo</label>
@@ -373,7 +411,7 @@
         <ul>
           <li><a href="tel:+19495197902">+1 (949) 519-7902</a></li>
           <li><a href="https://wa.me/19495197902" target="_blank" rel="noopener">WhatsApp</a></li>
-          <li><a href="/cdn-cgi/l/email-protection#b8d6ddcbcccaddd4d4d9f8d9dbcad1cbcdcaddd5d7caccdfd9dfdd96dbd7d5"><span class="__cf_email__" data-cfemail="c2aca7b1b6b0a7aeaea382a3a1b0abb1b7b0a7afadb0b6a5a3a5a7eca1adaf">nestrella@acrisuremortgage.com</span></a></li>
+          <li><a href="/cdn-cgi/l/email-protection#573932242325323b3b36173634253e242225323a382523303630327934383a"><span class="__cf_email__" data-cfemail="335d56404741565f5f52735250415a404641565e5c4147545254561d505c5e">[email&#160;protected]</span></a></li>
           <li><a href="https://www.google.com/maps/dir/?api=1&destination=132+W+Plant+St+Suite+210+Winter+Garden+FL+34787" target="_blank" rel="noopener" data-i18n="footer_office">132 W. Plant St, Suite 210 · Winter Garden, FL 34787</a></li>
         </ul>
       </div>
@@ -418,6 +456,155 @@ const LEAD_ENDPOINT = "https://nexlead.duckdns.org/api/webhooks/analise-orlando"
 /* Roteamento opcional p/ WhatsApp após o envio (descomente para usar): */
 const companyWhatsApp = "19495197902";
 // const WHATSAPP_REDIRECT = true;
+
+/* ════════════════ WHATSAPP INTERNACIONAL ════════════════
+   O visitante escolhe o país e digita o número local. A landing mostra a
+   máscara correta e envia ao CRM o número em E.164, formato ideal para wa.me:
+   +5511999999999, +14075551234 etc. */
+const PHONE_COUNTRIES = {
+  BR: { flag:"🇧🇷", name:"Brasil", dial:"55", min:10, max:11, placeholder:"(11) 99999-9999", trunk:false, format:d => formatBR(d) },
+  US: { flag:"🇺🇸", name:"Estados Unidos", dial:"1", min:10, max:10, placeholder:"(407) 555-1234", trunk:false, format:d => formatNANP(d) },
+  CA: { flag:"🇨🇦", name:"Canadá", dial:"1", min:10, max:10, placeholder:"(416) 555-1234", trunk:false, format:d => formatNANP(d) },
+  PT: { flag:"🇵🇹", name:"Portugal", dial:"351", min:9, max:9, placeholder:"912 345 678", trunk:false, groups:[3,3,3] },
+  ES: { flag:"🇪🇸", name:"Espanha", dial:"34", min:9, max:9, placeholder:"612 345 678", trunk:false, groups:[3,3,3] },
+  MX: { flag:"🇲🇽", name:"México", dial:"52", min:10, max:10, placeholder:"(55) 1234-5678", trunk:false, format:d => formatMX(d) },
+  CO: { flag:"🇨🇴", name:"Colômbia", dial:"57", min:10, max:10, placeholder:"300 123 4567", trunk:false, groups:[3,3,4] },
+  AR: { flag:"🇦🇷", name:"Argentina", dial:"54", min:10, max:11, placeholder:"11 1234-5678", trunk:false, format:d => formatAR(d) },
+  CL: { flag:"🇨🇱", name:"Chile", dial:"56", min:9, max:9, placeholder:"9 1234-5678", trunk:false, groups:[1,4,4], separators:[" ","-"] },
+  PE: { flag:"🇵🇪", name:"Peru", dial:"51", min:9, max:9, placeholder:"912 345 678", trunk:false, groups:[3,3,3] },
+  VE: { flag:"🇻🇪", name:"Venezuela", dial:"58", min:10, max:10, placeholder:"412 123 4567", trunk:true, groups:[3,3,4] },
+  PY: { flag:"🇵🇾", name:"Paraguai", dial:"595", min:9, max:9, placeholder:"981 123 456", trunk:true, groups:[3,3,3] },
+  UY: { flag:"🇺🇾", name:"Uruguai", dial:"598", min:8, max:9, placeholder:"99 123 456", trunk:false, groups:[2,3,4] },
+  BO: { flag:"🇧🇴", name:"Bolívia", dial:"591", min:8, max:8, placeholder:"7 123 4567", trunk:false, groups:[1,3,4] },
+  EC: { flag:"🇪🇨", name:"Equador", dial:"593", min:9, max:9, placeholder:"99 123 4567", trunk:true, groups:[2,3,4] },
+  DO: { flag:"🇩🇴", name:"Rep. Dominicana", dial:"1", min:10, max:10, placeholder:"(809) 555-1234", trunk:false, format:d => formatNANP(d) },
+  PA: { flag:"🇵🇦", name:"Panamá", dial:"507", min:8, max:8, placeholder:"6123-4567", trunk:false, groups:[4,4], separators:["-"] },
+  CR: { flag:"🇨🇷", name:"Costa Rica", dial:"506", min:8, max:8, placeholder:"6123-4567", trunk:false, groups:[4,4], separators:["-"] },
+  GT: { flag:"🇬🇹", name:"Guatemala", dial:"502", min:8, max:8, placeholder:"5123-4567", trunk:false, groups:[4,4], separators:["-"] },
+  GB: { flag:"🇬🇧", name:"Reino Unido", dial:"44", min:10, max:10, placeholder:"7123 456789", trunk:true, groups:[4,6] },
+  OTHER: { flag:"🌐", name:"Outro país", dial:"", min:6, max:15, placeholder:"Digite o número local", trunk:false, groups:[3,3,4,4] }
+};
+function onlyDigitsPhone(v){ return String(v || "").replace(/\D/g, ""); }
+function formatBR(d){
+  d = d.slice(0, 11);
+  if (!d) return "";
+  if (d.length <= 2) return "(" + d;
+  const ddd = d.slice(0, 2), rest = d.slice(2), mid = d.length > 10 ? 5 : 4;
+  if (rest.length <= mid) return `(${ddd}) ${rest}`;
+  return `(${ddd}) ${rest.slice(0, mid)}-${rest.slice(mid, mid + 4)}`;
+}
+function formatNANP(d){
+  d = d.slice(0, 10);
+  if (!d) return "";
+  if (d.length <= 3) return "(" + d;
+  if (d.length <= 6) return `(${d.slice(0,3)}) ${d.slice(3)}`;
+  return `(${d.slice(0,3)}) ${d.slice(3,6)}-${d.slice(6,10)}`;
+}
+function formatMX(d){
+  d = d.slice(0, 10);
+  if (!d) return "";
+  if (d.length <= 2) return "(" + d;
+  if (d.length <= 6) return `(${d.slice(0,2)}) ${d.slice(2)}`;
+  return `(${d.slice(0,2)}) ${d.slice(2,6)}-${d.slice(6,10)}`;
+}
+function formatAR(d){
+  d = d.slice(0, 11);
+  if (!d) return "";
+  if (d.length <= 2) return d;
+  if (d.length <= 6) return `${d.slice(0,2)} ${d.slice(2)}`;
+  return `${d.slice(0,2)} ${d.slice(2,6)}-${d.slice(6,10)}` + (d.length > 10 ? d.slice(10) : "");
+}
+function formatGroups(d, groups, separators){
+  if (!d) return "";
+  const parts = [];
+  let pos = 0;
+  for (const size of groups) {
+    if (pos >= d.length) break;
+    parts.push(d.slice(pos, pos + size));
+    pos += size;
+  }
+  if (pos < d.length) parts.push(d.slice(pos));
+  const seps = separators || [];
+  return parts.reduce((acc, part, i) => acc + (i ? (seps[i - 1] || " ") : "") + part, "");
+}
+function selectedPhoneCountry(){
+  const sel = document.getElementById("phoneCountry");
+  return PHONE_COUNTRIES[(sel && sel.value) || "BR"] || PHONE_COUNTRIES.BR;
+}
+function phoneDial(cfg){
+  if (cfg !== PHONE_COUNTRIES.OTHER) return cfg.dial;
+  return onlyDigitsPhone(document.getElementById("phoneCustomDial")?.value || "").slice(0, 4);
+}
+function normalizeNationalPhone(raw, cfg){
+  let d = onlyDigitsPhone(raw);
+  const dial = phoneDial(cfg);
+  if (dial && d.startsWith("00" + dial) && d.length > cfg.max) d = d.slice(2 + dial.length);
+  if (dial && d.startsWith(dial) && d.length > cfg.max) d = d.slice(dial.length);
+  if (cfg.trunk && d.startsWith("0") && d.length > cfg.max) d = d.replace(/^0+/, "");
+  return d.slice(0, cfg.max);
+}
+function formatNationalPhone(d, cfg){
+  if (cfg.format) return cfg.format(d);
+  return formatGroups(d.slice(0, cfg.max), cfg.groups || [3,3,4], cfg.separators || []);
+}
+function phonePayload(){
+  const cfg = selectedPhoneCountry();
+  const dial = phoneDial(cfg);
+  const national = normalizeNationalPhone(document.getElementById("whatsapp")?.value || "", cfg);
+  const formattedNational = formatNationalPhone(national, cfg);
+  const e164 = dial && national ? `+${dial}${national}` : "";
+  const label = `${cfg.flag} ${cfg.name}`;
+  const valid = Boolean(dial) && national.length >= cfg.min && national.length <= cfg.max && (dial + national).length <= 15;
+  return {
+    valid,
+    country: Object.keys(PHONE_COUNTRIES).find(k => PHONE_COUNTRIES[k] === cfg) || "BR",
+    country_name: cfg.name,
+    country_dial_code: dial ? `+${dial}` : "",
+    national,
+    formatted_national: formattedNational,
+    e164,
+    display: e164 ? `+${dial} ${formattedNational}` : formattedNational,
+    example: `${dial ? '+' + dial + ' ' : ''}${cfg.placeholder}`,
+    label
+  };
+}
+function phoneErrorMessage(info){
+  const lang = (typeof currentLang !== "undefined" ? currentLang : "pt");
+  const msg = {
+    pt: `Informe um WhatsApp válido para ${info.country_name}. Exemplo: ${info.example}`,
+    en: `Enter a valid WhatsApp number for ${info.country_name}. Example: ${info.example}`,
+    es: `Ingresa un WhatsApp válido para ${info.country_name}. Ejemplo: ${info.example}`
+  };
+  return msg[lang] || msg.pt;
+}
+function updatePhoneUI(opts){
+  opts = opts || {};
+  const combo = document.getElementById("phoneCombo"), input = document.getElementById("whatsapp"), hint = document.getElementById("phoneHint");
+  const cfg = selectedPhoneCountry();
+  if (!combo || !input || !hint) return;
+  combo.classList.toggle("custom", cfg === PHONE_COUNTRIES.OTHER);
+  input.placeholder = cfg.placeholder;
+  const national = normalizeNationalPhone(input.value, cfg);
+  const formatted = formatNationalPhone(national, cfg);
+  if (input.value !== formatted) input.value = formatted;
+  const info = phonePayload();
+  const lang = (typeof currentLang !== "undefined" ? currentLang : "pt");
+  const base = {
+    pt: "Será enviado ao atendimento como",
+    en: "It will be sent to our team as",
+    es: "Se enviará al equipo como"
+  }[lang] || "Será enviado ao atendimento como";
+  hint.innerHTML = info.e164 ? `${base} <strong>${info.display}</strong>` : `Exemplo: <strong>${info.example}</strong>`;
+}
+function initPhoneInput(){
+  const country = document.getElementById("phoneCountry"), dial = document.getElementById("phoneCustomDial"), input = document.getElementById("whatsapp");
+  if (!country || !input) return;
+  country.addEventListener("change", () => { input.value = ""; updatePhoneUI(); input.focus(); });
+  input.addEventListener("input", updatePhoneUI);
+  input.addEventListener("paste", () => setTimeout(updatePhoneUI, 0));
+  if (dial) dial.addEventListener("input", () => { dial.value = "+" + onlyDigitsPhone(dial.value).slice(0, 4); updatePhoneUI(); });
+  updatePhoneUI();
+}
 
 
 /* Captura de origem do Google Ads / UTMs
@@ -587,6 +774,7 @@ const T = {
 let currentLang = "pt";
 const FLAGS = { pt:"#flag-br", en:"#flag-us", es:"#flag-es" };
 const NAMES  = { pt:"Português", en:"English", es:"Español" };
+initPhoneInput();
 
 function setLanguage(lang){
   currentLang = T[lang] ? lang : "pt";
@@ -609,6 +797,7 @@ function setLanguage(lang){
     es:"Invierte en Propiedades en Orlando | Análisis Gratuito | Team Estrella · Acrisure Mortgage"
   }[currentLang];
   try { localStorage.setItem("estrella-lang", currentLang); } catch(e){}
+  if (typeof updatePhoneUI === "function") updatePhoneUI();
   closeLangMenu();
 }
 
@@ -667,6 +856,14 @@ document.getElementById("leadForm").addEventListener("submit", async function(e)
   }
   err.style.display = "none";
 
+  const phoneInfo = phonePayload();
+  if (!phoneInfo.valid){
+    err.style.display = "block";
+    err.textContent = phoneErrorMessage(phoneInfo);
+    document.getElementById("whatsapp").focus();
+    return;
+  }
+
   const score = calculateLeadScore();
   const temperature = getLeadTemperature(score);
   const tracking = getTrackingData();
@@ -675,7 +872,12 @@ document.getElementById("leadForm").addEventListener("submit", async function(e)
     language: currentLang,
     page: "analise-orlando",
     name: document.getElementById("name").value.trim(),
-    whatsapp: document.getElementById("whatsapp").value.trim(),
+    whatsapp: phoneInfo.e164,
+    whatsapp_display: phoneInfo.display,
+    whatsapp_country: phoneInfo.country,
+    whatsapp_country_name: phoneInfo.country_name,
+    whatsapp_country_code: phoneInfo.country_dial_code,
+    whatsapp_national: phoneInfo.national,
     email: document.getElementById("email").value.trim(),
     goal: document.getElementById("goal").value,
     budget: document.getElementById("budget").value,
@@ -752,5 +954,5 @@ document.getElementById("leadForm").addEventListener("submit", async function(e)
   }
 })();
 </script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3687a79bb9b1921',t:'MTc4ODY0NTMyOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a37ef0301c0920a7',t:'MTc4ODg4MDgzNw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
