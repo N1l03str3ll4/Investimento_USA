@@ -10,12 +10,1123 @@
 
 <title>Team Estrella | Acrisure Mortgage</title>
 <meta name="description" content="Team Estrella — Nilo Estrella, NMLS #2802165, at Acrisure Mortgage. Home loans in Central Florida: purchase, refinance, DSCR, bank statement and foreign national programs. Atendimento em português.">
-<link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" type="image/png" href="acrisure-logo-white.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ════════════════════════════════════════════════════════════════
+   TEMA "ANALISE" APLICADO À INDEX
+   Paleta navy + dourado · glassmorphism · aurora · partículas
+   (conteúdo e scripts da index permanecem inalterados)
+   ════════════════════════════════════════════════════════════════ */
+:root{
+  --navy:#070f1d; --navy2:#0a1424; --navy3:#0f1c31; --navy4:#14243f;
+  --gold:#c9993a; --gold2:#e7b95c; --gold3:#f6e3b8;
+  --teal:#4fd1c5;
+  --ink:#eef2f8; --ink-dim:#9fb0c8; --ink-faint:#6c7d99;
+  --line:rgba(255,255,255,.09); --glass:rgba(255,255,255,.045);
+  --font-h:'Sora',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-b:'Inter',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-b); color:var(--ink); background:var(--navy);
+  line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+h1,h2,h3,h4,h5,h6{font-family:var(--font-h); font-weight:700; letter-spacing:-.01em; line-height:1.15}
+a{text-decoration:none; color:inherit}
+img{display:block; max-width:100%}
+button,input,select,textarea{font:inherit; color:inherit}
+::selection{background:rgba(201,153,58,.3); color:#fff}
+::-webkit-scrollbar{width:11px; height:11px}
+::-webkit-scrollbar-track{background:var(--navy2)}
+::-webkit-scrollbar-thumb{background:rgba(201,153,58,.4); border-radius:99px; border:2px solid var(--navy2)}
+::-webkit-scrollbar-thumb:hover{background:rgba(231,185,92,.6)}
+
+/* fundo global (aurora) + canvas de partículas */
+.bg{position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(1100px 760px at 86% -12%, rgba(201,153,58,.14), transparent 60%),
+    radial-gradient(900px 720px at -8% 18%, rgba(52,92,170,.26), transparent 62%),
+    radial-gradient(1000px 900px at 55% 118%, rgba(23,58,102,.36), transparent 66%),
+    linear-gradient(180deg,#070f1d 0%, #0a1424 52%, #0a1322 100%);
+}
+#quantum{position:fixed; inset:0; z-index:0; pointer-events:none}
+.orb{position:fixed; border-radius:50%; filter:blur(70px); opacity:.5; pointer-events:none; z-index:0;
+  animation:float 16s ease-in-out infinite alternate}
+.orb-a{width:420px;height:420px;background:radial-gradient(circle, rgba(201,153,58,.42), transparent 70%);top:-8%;right:-6%}
+.orb-b{width:480px;height:480px;background:radial-gradient(circle, rgba(52,92,170,.5), transparent 70%);bottom:-12%;left:-8%;animation-delay:-8s}
+@keyframes float{from{transform:translate3d(0,0,0) scale(1)} to{transform:translate3d(30px,-40px,0) scale(1.12)}}
+
+/* garante que o conteúdo fique acima do fundo */
+#navbar,#hero,#why,#programs,#calculator,#application,#testimonials,#contact,footer,.toast{z-index:1}
+section{position:relative; padding:88px 0}
+
+/* ══════════════════ BARRA SUPERIOR (estilo "rolo") ══════════════════ */
+#navbar{position:fixed; top:0; left:0; right:0; z-index:400; min-height:60px;
+  display:flex; align-items:center; justify-content:space-between; gap:.8rem;
+  flex-wrap:nowrap;
+  padding:.45rem clamp(14px,3vw,40px);
+  background:linear-gradient(180deg, rgba(8,15,30,.99), rgba(10,19,36,.97));
+  filter:drop-shadow(0 10px 30px rgba(0,0,0,.45)); transition:background .3s}
+.logo{display:flex; align-items:center; gap:12px; min-width:0}
+.logo-img{height:40px; width:auto; flex-shrink:0; filter:drop-shadow(0 4px 16px rgba(201,153,58,.25))}
+.logo-text{display:flex; flex-direction:column; line-height:1.1; font-family:var(--font-h); font-weight:700;
+  font-size:1.02rem; color:#fff; white-space:nowrap}
+.logo-sub{font-size:.6rem; font-weight:700; letter-spacing:.28em; text-transform:uppercase; color:var(--gold2)}
+.nav-links{display:flex; align-items:center; gap:1.6rem 1.4rem; list-style:none; flex:1 1 auto; min-width:0; flex-wrap:wrap; justify-content:flex-end}
+.nav-links a{font-size:.92rem; font-weight:500; color:var(--ink-dim); transition:.2s; position:relative}
+.nav-links a:hover{color:#fff}
+.nav-links a::after{content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0;
+  background:linear-gradient(90deg,var(--gold2),var(--gold)); transition:width .25s; border-radius:2px}
+.nav-links a:hover::after{width:100%}
+.nav-right{display:flex; align-items:center; gap:.8rem}
+
+/* seletor de idioma */
+.lang-switch{position:relative}
+.lang-btn{display:flex; align-items:center; gap:.5rem;
+  background:rgba(255,255,255,.06); border:1px solid rgba(201,153,58,.35);
+  color:#fff; padding:.5rem .75rem; border-radius:12px; cursor:pointer; font-size:.84rem; transition:.2s}
+.lang-btn:hover{border-color:var(--gold2); background:rgba(201,153,58,.1)}
+.lang-btn .flag{width:20px; height:14px; border-radius:2px; overflow:hidden; display:block; flex-shrink:0}
+.lang-caret{width:9px; height:7px; opacity:.7}
+.lang-menu{display:none; position:absolute; right:0; top:calc(100% + 10px);
+  background:var(--navy3); border:1px solid rgba(201,153,58,.3); border-radius:14px;
+  overflow:hidden; min-width:196px; box-shadow:0 24px 60px rgba(0,0,0,.55); z-index:60; list-style:none}
+.lang-switch.open .lang-menu{display:block}
+.lang-opt{display:flex; align-items:center; gap:.65rem; width:100%;
+  background:none; border:0; color:rgba(255,255,255,.78); padding:.72rem .92rem;
+  cursor:pointer; text-align:left; font-size:.86rem}
+.lang-opt:hover{background:rgba(201,153,58,.12); color:var(--gold3)}
+.lang-opt[aria-checked="true"]{color:var(--gold2); background:rgba(201,153,58,.14)}
+.lang-opt .flag{width:22px; height:15px; border-radius:2px; overflow:hidden; flex-shrink:0}
+.lang-txt{display:flex; flex-direction:column; line-height:1.2}
+.lang-native{font-weight:600}
+.lang-country{font-size:.68rem; opacity:.6}
+.lang-check{width:12px; height:10px; margin-left:auto; opacity:0; color:var(--gold2)}
+.lang-opt[aria-checked="true"] .lang-check{opacity:1}
+
+.nav-cta{background:linear-gradient(135deg,var(--gold2),var(--gold));
+  color:#140d02; font-weight:700; font-size:.88rem; padding:.66rem 1.2rem; border-radius:12px;
+  transition:.22s; white-space:nowrap; box-shadow:0 8px 24px rgba(201,153,58,.28)}
+.nav-cta:hover{transform:translateY(-2px); box-shadow:0 14px 34px rgba(201,153,58,.42)}
+
+/* ══════════════════ BOTÕES GERAIS ══════════════════ */
+.btn-primary, .prog-cta, .calc-apply-btn .btn-primary, .btn-portal{
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  background:linear-gradient(135deg,var(--gold2),var(--gold)); color:#140d02;
+  font-weight:700; font-size:1rem; padding:1rem 1.7rem; border-radius:14px;
+  transition:.22s; box-shadow:0 14px 38px rgba(201,153,58,.32); border:0; cursor:pointer; text-decoration:none}
+.btn-primary:hover,.prog-cta:hover{transform:translateY(-3px); box-shadow:0 22px 50px rgba(201,153,58,.45)}
+.btn-primary::after,.prog-cta::after,.nav-cta::after{content:""; width:1.05em; height:1.05em; flex:0 0 auto;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='%23140d02' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center/contain no-repeat; transition:transform .25s ease}
+.btn-outline::after{content:""; width:1.05em; height:1.05em; flex:0 0 auto;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='%23e7b95c' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center/contain no-repeat; transition:transform .25s ease}
+.btn-primary:hover::after,.prog-cta:hover::after,.nav-cta:hover::after,.btn-outline:hover::after{transform:translateX(5px)}
+.btn-next::after{content:""; width:1.05em; height:1.05em; flex:0 0 auto;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='%23140d02' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center/contain no-repeat; transition:transform .25s ease}
+.btn-next:hover::after{transform:translateX(5px)}
+
+.btn-outline{display:inline-flex; align-items:center; gap:.55rem; color:#dfe7f2;
+  border:1px solid var(--line); background:var(--glass); border-radius:14px;
+  padding:1rem 1.5rem; font-weight:600; font-size:.96rem; transition:.22s; text-decoration:none}
+.btn-outline:hover{border-color:rgba(201,153,58,.5); color:#fff; background:rgba(201,153,58,.08)}
+
+.btn-portal{background:transparent; border:1px solid rgba(201,153,58,.45); color:var(--gold3);
+  box-shadow:none; padding:.8rem 1.2rem; font-size:.9rem}
+.btn-portal:hover{background:rgba(201,153,58,.12); transform:translateY(-2px)}
+
+/* ══════════════════ HERO ══════════════════ */
+#hero{padding-top:148px; overflow:hidden}
+.hero-bg-grid{position:absolute; inset:0; pointer-events:none; opacity:.5;
+  background-image:linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size:48px 48px; mask-image:radial-gradient(circle at 30% 30%, #000, transparent 70%)}
+.hero-glow,.hero-glow2{position:absolute; border-radius:50%; filter:blur(80px); pointer-events:none}
+.hero-glow{width:520px;height:520px;background:radial-gradient(circle, rgba(201,153,58,.3), transparent 70%);top:-10%;right:-6%}
+.hero-glow2{width:480px;height:480px;background:radial-gradient(circle, rgba(52,92,170,.4), transparent 70%);bottom:-14%;left:-8%}
+.hero-inner{position:relative; z-index:2; width:min(1240px,100%); margin:0 auto; padding:0 24px;
+  display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(2rem,5vw,4.6rem); align-items:center; min-height:72vh}
+.hero-content{position:relative; z-index:2}
+.hero-badge{display:inline-flex; align-items:center; gap:.5rem; margin-bottom:1.4rem;
+  background:linear-gradient(165deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+  border:1px solid rgba(201,153,58,.35); border-radius:999px; padding:.5rem 1.1rem;
+  backdrop-filter:blur(10px); box-shadow:0 12px 34px rgba(0,0,0,.3)}
+.badge-part{font-size:.72rem; font-weight:700; letter-spacing:.06em; color:var(--ink-dim)}
+.badge-part + .badge-part{margin-left:.5rem; padding-left:.7rem; border-left:1px solid var(--line); color:var(--gold3)}
+.hero-title{font-size:clamp(2.1rem,4.4vw,3.6rem); line-height:1.06; margin-bottom:1.2rem; font-weight:800; color:#fff}
+.hero-title-line{display:block; white-space:nowrap}
+.hero-title em{font-style:normal; background:linear-gradient(92deg,#f2d391 0%, var(--gold) 45%, #f8e7bd 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent}
+.hero-sub{font-size:clamp(1rem,1.5vw,1.14rem); color:#c7d3e4; max-width:560px; margin-bottom:2rem}
+.hero-btns{display:flex; flex-wrap:wrap; gap:.9rem; align-items:center; margin-bottom:2.4rem}
+.hero-stats{display:flex; flex-wrap:wrap; gap:2rem}
+.stat{display:flex; flex-direction:column}
+.stat-num{font-family:var(--font-h); font-weight:800; font-size:1.7rem; color:var(--gold2)}
+.stat-label{font-size:.78rem; color:var(--ink-faint); letter-spacing:.05em; text-transform:uppercase}
+
+/* card de contato do hero */
+.hero-card-wrap{position:relative; z-index:2; display:flex; justify-content:center; perspective:1400px}
+.hero-rate-card{position:relative; width:min(420px,100%); transform-style:preserve-3d;
+  background:linear-gradient(160deg, rgba(255,255,255,.09), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.12); border-radius:26px; padding:1.7rem 1.7rem;
+  backdrop-filter:blur(14px); box-shadow:0 40px 90px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.12);
+  transition:transform .25s ease-out}
+.hero-contact-card .hrc-profile{display:flex; align-items:center; gap:1rem; margin-bottom:1.3rem}
+.hrc-avatar{width:62px;height:62px;border-radius:50%;object-fit:cover;
+  border:2px solid var(--gold2); box-shadow:0 0 0 4px rgba(201,153,58,.15), 0 8px 26px rgba(201,153,58,.35)}
+.hrc-name{font-family:var(--font-h); font-weight:700; font-size:1.1rem; color:#fff}
+.hrc-role{font-size:.76rem; color:var(--ink-dim)}
+.hrc-row{display:flex; align-items:center; justify-content:space-between; gap:.5rem;
+  padding:.7rem .2rem; border-top:1px solid var(--line); text-decoration:none; color:var(--ink)}
+.hrc-row:hover .hrc-val{color:var(--gold2)}
+.hrc-prog{font-size:.78rem; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.08em}
+.hrc-val{font-weight:600; color:var(--ink); text-align:right}
+.hrc-updated{font-size:.72rem; color:var(--ink-faint); margin:.8rem 0; line-height:1.4}
+.hrc-actions{display:flex; flex-direction:column; gap:.6rem; margin-top:.6rem}
+.hrc-nmls{font-size:.66rem; color:rgba(255,255,255,.4); line-height:1.5; margin-top:1rem; text-align:center}
+
+.section-inner{width:min(1180px,100%); margin:0 auto; padding:0 24px}
+.section-header{max-width:760px; margin:0 auto 3rem}
+.section-header.centered{text-align:center}
+.section-tag{display:inline-block; font-size:.72rem; font-weight:700; letter-spacing:.22em;
+  text-transform:uppercase; color:var(--gold2); border:1px solid rgba(201,153,58,.35);
+  border-radius:99px; padding:.42rem .95rem; margin-bottom:1rem; background:rgba(201,153,58,.08)}
+.section-title{font-size:clamp(1.7rem,3.4vw,2.6rem); color:#fff; margin:.2rem 0 .6rem}
+.section-sub{color:var(--ink-dim); font-size:1.04rem}
+
+/* ══════════════════ WHY US ══════════════════ */
+.why-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem}
+.why-card{background:linear-gradient(165deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+  border:1px solid var(--line); border-radius:20px; padding:1.7rem 1.6rem;
+  backdrop-filter:blur(10px); transition:transform .25s, border-color .25s, box-shadow .25s}
+.why-card:hover{transform:translateY(-6px); border-color:rgba(201,153,58,.4);
+  box-shadow:0 26px 60px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.1)}
+.why-num{font-family:var(--font-h); font-weight:800; font-size:1.5rem; color:var(--gold2); margin-bottom:.7rem}
+.why-title{font-size:1.2rem; color:#fff; margin-bottom:.6rem}
+.why-desc{color:var(--ink-dim); font-size:.96rem; line-height:1.6}
+
+/* ══════════════════ PROGRAMS ══════════════════ */
+.programs-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem}
+.prog-card{background:linear-gradient(165deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+  border:1px solid var(--line); border-radius:22px; padding:1.8rem 1.6rem;
+  backdrop-filter:blur(10px); display:flex; flex-direction:column;
+  transition:transform .25s, border-color .25s, box-shadow .25s}
+.prog-card:hover{transform:translateY(-6px); border-color:rgba(201,153,58,.4);
+  box-shadow:0 26px 60px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.1)}
+.prog-icon-wrap{width:58px;height:58px;border-radius:16px;display:grid;place-items:center;font-size:1.7rem;margin-bottom:1rem}
+.prog-title{font-size:1.22rem; color:#fff; margin-bottom:.5rem}
+.prog-desc{color:var(--ink-dim); font-size:.95rem; line-height:1.6; margin-bottom:1rem}
+.prog-features{list-style:none; margin-bottom:1.4rem; display:flex; flex-direction:column; gap:.5rem}
+.prog-features li{position:relative; padding-left:1.5rem; font-size:.9rem; color:#cdd8e8}
+.prog-features li::before{content:"✓"; position:absolute; left:0; top:0; color:var(--gold2); font-weight:800}
+.prog-cta{width:100%; margin-top:auto; font-size:.92rem; padding:.85rem 1rem}
+
+/* ══════════════════ CALCULATOR ══════════════════ */
+.calc-tabs-wrap{display:flex; justify-content:center; margin-bottom:1.6rem}
+.rate-tabs{display:inline-flex; background:rgba(255,255,255,.05); border:1px solid var(--line);
+  border-radius:14px; padding:.3rem; gap:.3rem; backdrop-filter:blur(8px)}
+.rate-tab{border:0; background:transparent; color:var(--ink-dim); font-weight:600; font-size:.92rem;
+  padding:.6rem 1.4rem; border-radius:11px; cursor:pointer; transition:.2s}
+.rate-tab.active{background:linear-gradient(135deg,var(--gold2),var(--gold)); color:#140d02}
+.calc-wrap{display:grid; grid-template-columns:1.1fr .9fr; gap:1.6rem; align-items:start}
+.calc-controls,.calc-result{background:linear-gradient(165deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+  border:1px solid var(--line); border-radius:22px; padding:1.8rem 1.7rem; backdrop-filter:blur(10px);
+  box-shadow:0 26px 60px rgba(0,0,0,.35)}
+.form-group{margin-bottom:1.2rem}
+.form-label{display:block; font-size:.85rem; font-weight:600; color:var(--ink-dim); margin-bottom:.5rem}
+.input-prefix,.input-suffix{display:flex; align-items:center; background:rgba(255,255,255,.04);
+  border:1px solid var(--line); border-radius:12px; padding:0 .9rem; transition:.2s}
+.input-prefix span,.input-suffix span{color:var(--gold2); font-weight:700; font-size:1.05rem}
+.input-prefix input,.input-suffix input{flex:1; background:transparent; border:0; outline:none;
+  padding:.85rem .6rem; color:var(--ink); font-size:1rem; width:100%}
+.input-suffix{flex-direction:row-reverse}
+.input-suffix input{text-align:right}
+.form-input,.form-select{width:100%; background:rgba(255,255,255,.04); border:1px solid var(--line);
+  border-radius:12px; padding:.85rem .95rem; color:var(--ink); font-size:1rem; outline:none; transition:.2s}
+.form-input:focus,.form-select:focus{border-color:var(--gold); box-shadow:0 0 0 3px rgba(201,153,58,.16)}
+.form-select{appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%23e7b95c' stroke-width='2'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 1rem center; padding-right:2.4rem}
+.range-row{display:flex; align-items:center; gap:1rem}
+input[type=range]{-webkit-appearance:none; appearance:none; height:6px; border-radius:99px; flex:1;
+  background:linear-gradient(90deg,var(--gold) var(--p,40%), rgba(255,255,255,.12) var(--p,40%)); outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none; width:20px;height:20px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold2),var(--gold)); cursor:pointer; border:3px solid var(--navy3);
+  box-shadow:0 4px 12px rgba(201,153,58,.5)}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;border:3px solid var(--navy3);
+  background:linear-gradient(135deg,var(--gold2),var(--gold)); cursor:pointer}
+.range-val{font-family:var(--font-h); font-weight:700; color:var(--gold2); min-width:54px; text-align:right}
+.calc-rate-display{font-family:var(--font-h); font-weight:700; font-size:1.15rem; color:var(--ink);
+  background:rgba(255,255,255,.04); border:1px solid var(--line); border-radius:12px; padding:.85rem .95rem}
+.calc-rate-display.has-value{color:var(--gold2)}
+.monthly-pay{font-family:var(--font-h); font-weight:800; font-size:clamp(2.2rem,4vw,3rem); color:#fff;
+  display:flex; align-items:baseline; gap:.3rem; margin:.4rem 0 1.4rem}
+.monthly-pay.placeholder{color:var(--ink-faint)}
+.monthly-pay span:first-child{color:var(--gold2); font-size:.6em}
+.calc-breakdown{display:flex; flex-direction:column; gap:.55rem; margin-bottom:1.2rem}
+.breakdown-row{display:flex; justify-content:space-between; font-size:.92rem; padding-bottom:.55rem;
+  border-bottom:1px solid rgba(255,255,255,.06)}
+.breakdown-row .bl{color:var(--ink-dim)}
+.breakdown-row .bv{font-weight:600; color:var(--ink)}
+.calc-disclaimer{font-size:.78rem; color:var(--ink-faint); line-height:1.55; margin-bottom:1.2rem}
+.calc-apply-btn{margin-top:.4rem}
+
+/* ══════════════════ APPLICATION (multi-step) ══════════════════ */
+.steps-bar{display:flex; justify-content:space-between; max-width:680px; margin:0 auto 2.4rem; position:relative}
+.steps-bar::before{content:""; position:absolute; top:18px; left:6%; right:6%; height:2px;
+  background:linear-gradient(90deg,var(--gold) 0%, var(--gold) 25%, rgba(255,255,255,.12) 25%); z-index:0}
+.step-dot-wrap{flex:1; display:flex; flex-direction:column; align-items:center; gap:.5rem; position:relative; z-index:1}
+.step-dot{width:38px;height:38px;border-radius:50%; display:grid; place-items:center; font-weight:700;
+  background:var(--navy3); border:2px solid var(--line); color:var(--ink-faint); transition:.3s}
+.step-dot.active{border-color:var(--gold); color:#140d02; background:linear-gradient(135deg,var(--gold2),var(--gold));
+  box-shadow:0 0 0 5px rgba(201,153,58,.15), 0 8px 22px rgba(201,153,58,.4)}
+.step-dot.done{background:rgba(201,153,58,.18); border-color:rgba(201,153,58,.5); color:var(--gold2)}
+.step-label{font-size:.78rem; color:var(--ink-faint); transition:.3s}
+.step-label.active{color:var(--gold2); font-weight:600}
+
+.app-form-card,.contact-form-card{background:linear-gradient(165deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+  border:1px solid var(--line); border-radius:24px; padding:2.2rem 2rem; backdrop-filter:blur(12px);
+  box-shadow:0 30px 70px rgba(0,0,0,.4); max-width:820px; margin:0 auto}
+.step-heading{font-size:1.5rem; color:#fff; margin-bottom:.3rem}
+.step-subheading{color:var(--ink-dim); margin-bottom:1.6rem; font-size:.98rem}
+.form-grid-2{display:grid; grid-template-columns:1fr 1fr; gap:1.1rem}
+.form-group.form-full{grid-column:1 / -1}
+.form-input.invalid,.form-select.invalid{border-color:#e5484d; box-shadow:0 0 0 3px rgba(229,72,77,.18)}
+.radio-group{display:flex; flex-wrap:wrap; gap:.7rem}
+.radio-option{position:relative}
+.radio-option input{position:absolute; opacity:0; width:1px; height:1px}
+.radio-option label{display:inline-flex; align-items:center; cursor:pointer; border:1px solid var(--line);
+  border-radius:11px; padding:.6rem 1rem; font-size:.92rem; color:var(--ink-dim); transition:.18s}
+.radio-option input:checked + label{border-color:var(--gold); background:rgba(201,153,58,.14); color:var(--gold3); font-weight:600}
+.radio-option input:focus-visible + label{box-shadow:0 0 0 3px rgba(201,153,58,.2)}
+.form-nav{display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-top:1.8rem}
+.step-count{font-size:.82rem; color:var(--ink-faint); letter-spacing:.04em}
+.btn-next,.btn-back,.btn-submit{border:0; cursor:pointer; font-weight:700; border-radius:12px; font-size:.95rem; padding:.85rem 1.4rem; transition:.2s}
+.btn-next,.btn-submit{background:linear-gradient(135deg,var(--gold2),var(--gold)); color:#140d02;
+  box-shadow:0 10px 26px rgba(201,153,58,.3)}
+.btn-next:hover,.btn-submit:hover{transform:translateY(-2px); box-shadow:0 16px 36px rgba(201,153,58,.42)}
+.btn-back{background:transparent; border:1px solid var(--line); color:var(--ink-dim)}
+.btn-back:hover{border-color:var(--gold2); color:#fff}
+.is-disabled{opacity:.45; cursor:not-allowed; transform:none!important; box-shadow:none!important}
+.form-step{display:none}
+.form-step.active{display:block; animation:fadeStep .35s ease}
+@keyframes fadeStep{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:none}}
+
+.review-section{margin-bottom:1.4rem; padding-bottom:1.2rem; border-bottom:1px solid rgba(255,255,255,.07)}
+.review-section h4{font-size:.78rem; color:var(--gold2); text-transform:uppercase; letter-spacing:.14em; margin-bottom:.7rem; font-family:var(--font-b)}
+.review-row{display:flex; justify-content:space-between; gap:1rem; font-size:.92rem; padding:.3rem 0}
+.review-row .rl{color:var(--ink-dim)}
+.review-row .rv{font-weight:600; color:var(--ink); text-align:right}
+.consent-row{display:flex; gap:.7rem; align-items:flex-start; font-size:.84rem; color:var(--ink-dim); line-height:1.55; margin:.6rem 0}
+.consent-row input{margin-top:.25rem; width:18px;height:18px; accent-color:var(--gold)}
+.consent-row a{color:var(--gold2)}
+
+.success-state{text-align:center; padding:1.5rem 0}
+.success-icon{font-size:3rem; margin-bottom:.6rem}
+.success-state h3{color:#fff; font-size:1.6rem; margin-bottom:.7rem}
+.success-state p{color:var(--ink-dim); max-width:520px; margin:0 auto 1rem}
+.portal-alt{text-align:center; margin-top:1.4rem; font-size:.9rem; color:var(--ink-faint)}
+.portal-alt a{color:var(--gold2); font-weight:600; margin-left:.4rem}
+
+/* ══════════════════ TESTIMONIALS ══════════════════ */
+.test-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem}
+.test-card{background:linear-gradient(165deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+  border:1px solid var(--line); border-radius:22px; padding:1.8rem 1.6rem; backdrop-filter:blur(10px);
+  transition:transform .25s, border-color .25s}
+.test-card:hover{transform:translateY(-6px); border-color:rgba(201,153,58,.4)}
+.test-stars{color:var(--gold2); font-size:1.1rem; margin-bottom:.9rem; letter-spacing:.1em}
+.test-quote{color:#dbe5f2; font-size:1rem; line-height:1.7; margin-bottom:1.4rem; font-style:italic}
+.test-author{display:flex; align-items:center; gap:.8rem}
+.test-avatar{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-weight:800;
+  background:linear-gradient(135deg,var(--gold2),var(--gold)); color:#140d02; font-family:var(--font-h)}
+.test-name{font-weight:700; color:#fff; font-size:.95rem}
+.test-location{font-size:.78rem; color:var(--ink-faint)}
+
+/* ══════════════════ CONTACT ══════════════════ */
+.contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start}
+.contact-info .section-title{font-size:clamp(1.7rem,3vw,2.3rem)}
+.contact-info>p{color:var(--ink-dim); margin:1rem 0 1.6rem; max-width:480px}
+.contact-items{display:flex; flex-direction:column; gap:.8rem}
+.contact-item{display:flex; align-items:center; gap:1rem; padding:1rem 1.1rem;
+  background:linear-gradient(165deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border:1px solid var(--line); border-radius:16px; text-decoration:none; transition:.2s}
+.contact-item.link-active:hover{border-color:rgba(201,153,58,.45); transform:translateX(4px); background:rgba(201,153,58,.08)}
+.ci-icon{width:44px;height:44px;border-radius:12px;
+  background:linear-gradient(145deg, rgba(255,255,255,.98), rgba(228,239,255,.84));
+  border:1px solid rgba(255,255,255,.55);
+  box-shadow:0 8px 18px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.8);
+  display:grid;place-items:center;font-size:1.2rem; flex-shrink:0}
+.ci-label{font-size:.74rem; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.08em}
+.ci-val{font-weight:600; color:var(--ink); font-size:.96rem; line-height:1.4}
+.contact-form-card h3{color:#fff; font-size:1.3rem; margin-bottom:1.2rem}
+.form-textarea{width:100%; min-height:120px; resize:vertical; background:rgba(255,255,255,.04);
+  border:1px solid var(--line); border-radius:12px; padding:.85rem .95rem; color:var(--ink); font-size:1rem; outline:none; transition:.2s}
+.form-textarea:focus{border-color:var(--gold); box-shadow:0 0 0 3px rgba(201,153,58,.16)}
+
+/* ══════════════════ FOOTER ══════════════════ */
+footer{position:relative; z-index:1; padding:64px 0 30px; border-top:1px solid var(--line);
+  background:linear-gradient(180deg, rgba(10,19,36,.4), rgba(7,15,29,.7))}
+.footer-inner{width:min(1180px,100%); margin:0 auto; padding:0 24px}
+.footer-top{display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:2rem; padding-bottom:2rem}
+.footer-brand p{color:rgba(255,255,255,.5); font-size:.86rem; line-height:1.7; max-width:420px; margin-top:1rem}
+.footer-social{display:flex; gap:.6rem; margin-top:1.2rem}
+.soc-btn{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:var(--ink-dim);
+  background:rgba(255,255,255,.05); border:1px solid var(--line); transition:.2s}
+.soc-btn:hover{color:#140d02; background:linear-gradient(135deg,var(--gold2),var(--gold)); border-color:transparent; transform:translateY(-2px)}
+.footer-col h4{font-size:.78rem; color:var(--gold2); text-transform:uppercase; letter-spacing:.14em; margin-bottom:1rem; font-family:var(--font-b)}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:.6rem}
+.footer-col a{color:rgba(255,255,255,.6); font-size:.88rem; transition:color .2s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid var(--line); padding-top:1.6rem; display:flex; flex-wrap:wrap; gap:1rem;
+  align-items:center; justify-content:space-between}
+.footer-legal{font-size:.7rem; color:rgba(255,255,255,.35); line-height:1.7; max-width:760px}
+.footer-copy{font-size:.74rem; color:rgba(255,255,255,.45)}
+.footer-bottom-right{display:flex; align-items:center; gap:.6rem}
+.equal-housing{display:flex; align-items:center; gap:.5rem; text-decoration:none}
+.equal-housing-label{font-family:Arial,sans-serif; font-weight:900; font-size:.56rem; color:rgba(255,255,255,.85);
+  text-align:center; letter-spacing:.08em; line-height:1.4}
+
+/* ══════════════════ FADE-UP / TOAST ══════════════════ */
+.fade-up{opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease}
+.fade-up.visible{opacity:1; transform:none}
+
+/* impede flash de conteúdo antes da tradução */
+html.i18n-loading{visibility:hidden}
+html.i18n-loading::after{content:""; position:fixed; inset:0; background:var(--navy); z-index:999}
+
+/* ══════════════════ RESPONSIVO ══════════════════ */
+@media(max-width:1020px){
+  .hero-inner{grid-template-columns:1fr; gap:2.4rem}
+  .hero-card-wrap{order:-1}
+  .why-grid,.programs-grid,.test-grid{grid-template-columns:1fr 1fr}
+  .calc-wrap{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr}
+}
+@media(max-width:1180px){
+  .nav-links{gap:1rem 1.2rem}
+  .logo-text{font-size:.96rem}
+  .nav-cta{padding:.6rem 1rem}
+}
+@media(max-width:980px){
+  .nav-links{gap:.6rem .9rem}
+  .nav-links a{font-size:.84rem}
+  .logo-sub{display:none}
+  .lang-current{display:none}
+  .nav-cta{padding:.55rem .85rem; font-size:.82rem}
+}
+@media(max-width:680px){
+  #navbar{flex-wrap:wrap; row-gap:.4rem}
+  .logo{order:1; min-width:0}
+  .nav-right{order:2; margin-left:auto}
+  .nav-links{order:3; width:100%; justify-content:center; gap:.5rem .8rem}
+  .nav-links a{font-size:.8rem}
+}
+@media(max-width:640px){
+  #hero{padding-top:120px}
+  .why-grid,.programs-grid,.test-grid,.form-grid-2{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .nav-cta{padding:.55rem .85rem; font-size:.78rem}
+  .lang-current{display:none}
+  .footer-bottom{flex-direction:column; align-items:flex-start}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important; transition:none!important}
+  html{scroll-behavior:auto}
+}
+
+
+/* ══════════════════ HERO CARD — PLATAFORMA FLUTUANTE ══════════════════ */
+/* A animação fica no wrapper e a inclinação/"afundamento" no card; assim os
+   dois movimentos se combinam sem disputar a mesma propriedade transform. */
+.hero-card-wrap.hero-platform{
+  isolation:isolate;
+}
+.hero-card-wrap.hero-platform::after{
+  content:"";
+  position:absolute;
+  z-index:0;
+  left:12%;
+  bottom:-27px;
+  width:76%;
+  height:24px;
+  pointer-events:none;
+  border-radius:50%;
+  background:radial-gradient(ellipse at center, rgba(0,0,0,.72) 0%, rgba(0,0,0,.38) 42%, rgba(0,0,0,0) 74%);
+  filter:blur(8px);
+  opacity:.7;
+  transform:translateY(0) scaleX(1.06);
+  transition:transform .5s cubic-bezier(.22,.9,.32,1), opacity .5s ease, filter .5s ease;
+}
+.hero-card-wrap.hero-platform.visible{
+  animation:hero-platform-float 5.8s cubic-bezier(.45,0,.55,1) infinite;
+}
+@keyframes hero-platform-float{
+  0%,100%{transform:translate3d(0,0,0) rotateZ(0deg)}
+  50%{transform:translate3d(0,-12px,0) rotateZ(-.28deg)}
+}
+.hero-rate-card{
+  --hero-card-tilt-x:0deg;
+  --hero-card-tilt-y:0deg;
+  --hero-card-press:0px;
+  z-index:1;
+  overflow:hidden;
+  transform:translate3d(0,var(--hero-card-press),0) rotateX(var(--hero-card-tilt-x)) rotateY(var(--hero-card-tilt-y));
+  transform-origin:center center;
+  will-change:transform,box-shadow;
+  transition:transform .48s cubic-bezier(.22,.9,.32,1), box-shadow .48s cubic-bezier(.22,.9,.32,1), border-color .35s ease, background .35s ease;
+}
+.hero-rate-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  border-radius:inherit;
+  opacity:0;
+  background:radial-gradient(260px circle at var(--hero-card-glow-x,50%) var(--hero-card-glow-y,0%), rgba(246,227,184,.18), rgba(231,185,92,.055) 36%, transparent 70%);
+  transition:opacity .3s ease;
+}
+.hero-contact-card > *{position:relative; z-index:1}
+.hero-card-wrap.hero-platform.is-hovering{
+  animation-play-state:paused;
+}
+.hero-card-wrap.hero-platform.is-hovering::after{
+  opacity:.96;
+  filter:blur(5px);
+  transform:translateY(9px) scaleX(.88);
+}
+.hero-rate-card.is-hovering{
+  --hero-card-press:10px;
+  border-color:rgba(231,185,92,.38);
+  background:linear-gradient(160deg, rgba(255,255,255,.115), rgba(255,255,255,.03));
+  box-shadow:0 22px 48px rgba(0,0,0,.58), inset 0 1px 0 rgba(255,255,255,.17), 0 0 34px rgba(201,153,58,.1);
+}
+.hero-rate-card.is-hovering::before{opacity:1}
+
+/* Selo de conformidade no rodapé do card de contato. */
+.hrc-equal-housing{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:.45rem;
+  max-width:100%;
+  margin:.82rem auto 0;
+  padding-top:.76rem;
+  border-top:1px solid rgba(255,255,255,.09);
+  color:rgba(231,185,92,.92);
+  font-family:Arial,sans-serif;
+  font-size:.59rem;
+  font-weight:900;
+  letter-spacing:.095em;
+  line-height:1.25;
+  text-align:center;
+  text-transform:uppercase;
+}
+.hrc-equal-housing svg{
+  display:block;
+  flex:0 0 auto;
+  width:17px;
+  height:19px;
+  filter:drop-shadow(0 2px 5px rgba(0,0,0,.3));
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-rate-card{will-change:auto}
+}
+
+
+/* ══════════════════ WHY US — CARROSSEL 3D INTERATIVO ══════════════════ */
+/* Mantém os textos originais: título na face frontal e descrição no verso. */
+#why .why-grid.why-carousel-shell{
+  display:block;
+  width:min(1200px,100%);
+  margin:0 auto;
+}
+#why .why-carousel-stage{
+  position:relative;
+  z-index:1;
+  width:100%;
+  height:clamp(318px,35vw,405px);
+  perspective:2300px;
+  perspective-origin:50% 48%;
+  overflow:visible;
+  touch-action:pan-y;
+  user-select:none;
+  -webkit-user-select:none;
+  --why-card-w:clamp(220px,25vw,316px);
+  --why-card-h:clamp(252px,29vw,332px);
+}
+#why .why-carousel-ring{
+  position:absolute;
+  inset:0;
+  transform-style:preserve-3d;
+  will-change:transform;
+}
+#why .why-carousel-shell .why-card{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:var(--why-card-w);
+  height:var(--why-card-h);
+  margin:calc(var(--why-card-h) / -2) 0 0 calc(var(--why-card-w) / -2);
+  padding:0;
+  appearance:none;
+  -webkit-appearance:none;
+  color:inherit;
+  background:transparent;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  backdrop-filter:none;
+  cursor:pointer;
+  transform-style:preserve-3d;
+  transition:opacity .3s ease, filter .3s ease;
+}
+#why .why-carousel-shell .why-card:hover{
+  transform:none;
+  border-color:transparent;
+  box-shadow:none;
+}
+#why .why-carousel-shell .why-card.is-dim{opacity:.3; filter:saturate(.7) brightness(.76)}
+#why .why-carousel-stage.is-dragging .why-card{cursor:grabbing}
+#why .why-flip{
+  position:absolute;
+  inset:0;
+  display:block;
+  transform-style:preserve-3d;
+  transition:transform .82s cubic-bezier(.22,.86,.24,1);
+}
+#why .why-ring-item.is-flipped .why-flip{transform:rotateY(180deg)}
+#why .why-face{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  overflow:hidden;
+  padding:1.45rem 1.35rem 1.3rem;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:24px;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+}
+#why .why-face-front{
+  background:
+    radial-gradient(180px circle at 50% 44%, rgba(201,153,58,.14), transparent 64%),
+    linear-gradient(165deg, rgba(255,255,255,.105), rgba(255,255,255,.02) 57%),
+    var(--navy3);
+  box-shadow:0 30px 74px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.14);
+}
+#why .why-face-front::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:142px;
+  height:142px;
+  border:1px solid rgba(231,185,92,.14);
+  border-radius:50%;
+  box-shadow:0 0 0 20px rgba(201,153,58,.025), 0 0 42px rgba(201,153,58,.09);
+  transform:translate(-50%,-50%);
+}
+#why .why-face-back{
+  transform:rotateY(180deg);
+  background:
+    radial-gradient(210px circle at 50% 10%, rgba(201,153,58,.15), transparent 62%),
+    linear-gradient(165deg, #11213d, #081322 73%);
+  border-color:rgba(201,153,58,.46);
+  box-shadow:0 30px 74px rgba(0,0,0,.55), inset 0 1px 0 rgba(246,227,184,.2), 0 0 0 1px rgba(201,153,58,.12);
+}
+#why .why-face > *{position:relative; z-index:1}
+#why .why-carousel-shell .why-num{
+  display:block;
+  margin:0;
+  color:var(--gold2);
+  font-family:var(--font-h);
+  font-size:.78rem;
+  font-weight:800;
+  letter-spacing:.16em;
+  line-height:1;
+  text-align:center;
+}
+#why .why-carousel-shell .why-title{
+  display:block;
+  margin:auto 0;
+  color:#fff;
+  font-family:var(--font-h);
+  font-size:clamp(1.15rem,1.65vw,1.45rem);
+  font-weight:700;
+  line-height:1.25;
+  text-align:center;
+}
+#why .why-carousel-shell .why-desc{
+  display:block;
+  margin:auto 0;
+  color:#d9e4f2;
+  font-size:clamp(.82rem,1.18vw,.94rem);
+  font-weight:400;
+  line-height:1.62;
+  text-align:center;
+}
+#why .why-card-hint{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:.4rem;
+  min-height:1.1rem;
+  color:rgba(231,185,92,.82);
+  font-size:.61rem;
+  font-weight:700;
+  letter-spacing:.105em;
+  line-height:1.3;
+  text-align:center;
+  text-transform:uppercase;
+}
+#why .why-card-hint::after{
+  content:"↻";
+  display:inline-block;
+  font-size:.92rem;
+  font-weight:400;
+  line-height:1;
+}
+#why .why-ring-item.is-active .why-face-front{
+  border-color:rgba(231,185,92,.62);
+  box-shadow:0 32px 82px rgba(0,0,0,.56), 0 0 0 1px rgba(201,153,58,.32), 0 0 54px rgba(201,153,58,.16), inset 0 1px 0 rgba(255,255,255,.18);
+}
+#why .why-ring-item:focus-visible{outline:none}
+#why .why-ring-item:focus-visible .why-face{
+  outline:2px solid var(--gold3);
+  outline-offset:4px;
+}
+#why .why-carousel-controls{
+  position:relative;
+  z-index:3;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:1.05rem;
+  margin-top:.8rem;
+}
+#why .why-carousel-arrow{
+  display:grid;
+  width:46px;
+  height:46px;
+  padding:0;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:50%;
+  color:#e6edf7;
+  background:rgba(255,255,255,.055);
+  cursor:pointer;
+  backdrop-filter:blur(10px);
+  transition:transform .22s ease, color .22s ease, border-color .22s ease, box-shadow .22s ease, background .22s ease;
+}
+#why .why-carousel-arrow:hover{
+  color:var(--gold2);
+  border-color:var(--gold2);
+  background:rgba(201,153,58,.1);
+  box-shadow:0 12px 28px rgba(0,0,0,.36), 0 0 22px rgba(201,153,58,.12);
+  transform:translateY(-2px);
+}
+#why .why-carousel-arrow:focus-visible,
+#why .why-carousel-dot:focus-visible{outline:2px solid var(--gold3); outline-offset:3px}
+#why .why-carousel-dots{display:flex; align-items:center; justify-content:center; gap:.52rem}
+#why .why-carousel-dot{
+  width:9px;
+  height:9px;
+  padding:0;
+  border:0;
+  border-radius:99px;
+  background:rgba(255,255,255,.25);
+  cursor:pointer;
+  transition:width .3s ease, background .3s ease, box-shadow .3s ease, transform .2s ease;
+}
+#why .why-carousel-dot:hover{background:rgba(231,185,92,.72); transform:scale(1.12)}
+#why .why-carousel-dot.is-current{
+  width:27px;
+  background:var(--gold2);
+  box-shadow:0 0 14px rgba(201,153,58,.68);
+}
+#why .why-carousel-count{
+  min-width:74px;
+  margin:.55rem auto 0;
+  color:var(--ink-faint);
+  font-size:.72rem;
+  font-variant-numeric:tabular-nums;
+  letter-spacing:.15em;
+  line-height:1;
+  text-align:center;
+}
+@media(max-width:640px){
+  #why .why-carousel-stage{
+    height:330px;
+    --why-card-w:220px;
+    --why-card-h:258px;
+    perspective:1500px;
+  }
+  #why .why-carousel-controls{gap:.78rem; margin-top:.5rem}
+  #why .why-carousel-arrow{width:42px; height:42px}
+  #why .why-carousel-dots{gap:.4rem}
+  #why .why-carousel-dot.is-current{width:22px}
+}
+@media(prefers-reduced-motion:reduce){
+  #why .why-carousel-ring{will-change:auto}
+}
+
+
+/* ══════════════════ PROGRAMAS — CARROSSEL 3D + ILUSTRAÇÕES ══════════════════ */
+/* Cada arte é um SVG interno: leve, nítido em qualquer tela e sem emoji externo. */
+#programs .programs-grid.program-carousel-shell{
+  display:block;
+  width:min(1200px,100%);
+  margin:0 auto;
+}
+#programs .program-carousel-stage{
+  position:relative;
+  z-index:1;
+  width:100%;
+  height:clamp(455px,48vw,530px);
+  overflow:visible;
+  perspective:2500px;
+  perspective-origin:50% 48%;
+  touch-action:pan-y;
+  user-select:none;
+  -webkit-user-select:none;
+  --program-card-w:clamp(276px,28vw,360px);
+  --program-card-h:clamp(420px,42vw,470px);
+}
+#programs .program-carousel-ring{
+  position:absolute;
+  inset:0;
+  transform-style:preserve-3d;
+  will-change:transform;
+}
+#programs .program-carousel-shell .prog-card{
+  position:absolute;
+  left:50%;
+  top:50%;
+  display:block;
+  width:var(--program-card-w);
+  height:var(--program-card-h);
+  margin:calc(var(--program-card-h) / -2) 0 0 calc(var(--program-card-w) / -2);
+  padding:0;
+  color:inherit;
+  background:transparent;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  backdrop-filter:none;
+  transform-style:preserve-3d;
+  transition:opacity .3s ease, filter .3s ease;
+}
+#programs .program-carousel-shell .prog-card:hover{
+  transform:none;
+  border-color:transparent;
+  box-shadow:none;
+}
+#programs .program-carousel-shell .prog-card.is-dim{opacity:.28; filter:saturate(.68) brightness(.74)}
+#programs .program-carousel-stage.is-dragging .program-flip{cursor:grabbing}
+#programs .program-flip{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  display:block;
+  padding:0;
+  color:inherit;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  transform-style:preserve-3d;
+  transition:transform .85s cubic-bezier(.22,.86,.24,1);
+}
+#programs .program-ring-item.is-flipped .program-flip{transform:rotateY(180deg)}
+#programs .program-face{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  padding:1.4rem 1.4rem 1.3rem;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:25px;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+}
+#programs .program-face-front{
+  background:
+    radial-gradient(190px circle at 50% 47%, rgba(201,153,58,.145), transparent 64%),
+    linear-gradient(165deg, rgba(255,255,255,.11), rgba(255,255,255,.022) 59%),
+    var(--navy3);
+  box-shadow:0 32px 80px rgba(0,0,0,.52), inset 0 1px 0 rgba(255,255,255,.15);
+}
+#programs .program-face-front::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:49%;
+  width:175px;
+  height:175px;
+  border:1px solid rgba(231,185,92,.12);
+  border-radius:50%;
+  box-shadow:0 0 0 25px rgba(201,153,58,.022), 0 0 52px rgba(201,153,58,.11);
+  transform:translate(-50%,-50%);
+}
+#programs .program-face-back{
+  padding-bottom:5.15rem;
+  transform:rotateY(180deg);
+  background:
+    radial-gradient(235px circle at 50% 0%, rgba(201,153,58,.16), transparent 62%),
+    linear-gradient(165deg, #122340, #081322 75%);
+  border-color:rgba(201,153,58,.46);
+  box-shadow:0 32px 80px rgba(0,0,0,.57), inset 0 1px 0 rgba(246,227,184,.2), 0 0 0 1px rgba(201,153,58,.12);
+}
+#programs .program-face > *{position:relative; z-index:1}
+#programs .program-card-index{
+  display:block;
+  color:var(--gold2);
+  font-family:var(--font-h);
+  font-size:.76rem;
+  font-weight:800;
+  letter-spacing:.17em;
+  line-height:1;
+  text-align:center;
+}
+#programs .program-art{
+  display:grid;
+  flex:1;
+  min-height:0;
+  place-items:center;
+  color:var(--gold2);
+}
+#programs .program-art-svg{
+  display:block;
+  width:min(94%,250px);
+  height:auto;
+  max-height:190px;
+  overflow:visible;
+  filter:drop-shadow(0 14px 24px rgba(201,153,58,.22));
+}
+#programs .program-ring-item[data-program-index="1"] .program-art{color:#75c7ff}
+#programs .program-ring-item[data-program-index="1"] .program-art-svg{filter:drop-shadow(0 14px 24px rgba(75,176,239,.24))}
+#programs .program-ring-item[data-program-index="2"] .program-art{color:#68d5ae}
+#programs .program-ring-item[data-program-index="2"] .program-art-svg{filter:drop-shadow(0 14px 24px rgba(67,196,147,.22))}
+#programs .program-ring-item[data-program-index="3"] .program-art{color:#b69dff}
+#programs .program-ring-item[data-program-index="3"] .program-art-svg{filter:drop-shadow(0 14px 24px rgba(157,123,244,.22))}
+#programs .program-ring-item[data-program-index="4"] .program-art{color:#f1c773}
+#programs .program-ring-item[data-program-index="5"] .program-art{color:#ffa979}
+#programs .program-ring-item[data-program-index="5"] .program-art-svg{filter:drop-shadow(0 14px 24px rgba(238,132,85,.24))}
+#programs .program-carousel-shell .prog-title{
+  display:block;
+  margin:.25rem 0 1rem;
+  color:#fff;
+  font-family:var(--font-h);
+  font-size:clamp(1.14rem,1.65vw,1.45rem);
+  font-weight:700;
+  line-height:1.25;
+  text-align:center;
+}
+#programs .program-carousel-shell .prog-desc{
+  display:block;
+  margin:.85rem 0 .75rem;
+  color:#d9e5f3;
+  font-size:clamp(.79rem,1.03vw,.9rem);
+  line-height:1.56;
+  text-align:center;
+}
+#programs .program-carousel-shell .prog-features{
+  display:flex;
+  flex:1;
+  flex-direction:column;
+  gap:.38rem;
+  min-height:0;
+  margin:.1rem 0 .55rem;
+  padding:0;
+  list-style:none;
+  text-align:left;
+}
+#programs .program-carousel-shell .prog-features li{
+  position:relative;
+  padding-left:1.15rem;
+  color:#d3dfed;
+  font-size:clamp(.72rem,.91vw,.82rem);
+  line-height:1.4;
+}
+#programs .program-carousel-shell .prog-features li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.42em;
+  width:.44rem;
+  height:.44rem;
+  border:1.5px solid var(--gold2);
+  border-radius:50%;
+  box-shadow:0 0 9px rgba(231,185,92,.55);
+}
+#programs .program-card-hint{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:.4rem;
+  min-height:1.05rem;
+  color:rgba(231,185,92,.84);
+  font-size:.59rem;
+  font-weight:700;
+  letter-spacing:.1em;
+  line-height:1.3;
+  text-align:center;
+  text-transform:uppercase;
+}
+#programs .program-card-hint::after{
+  content:"↻";
+  display:inline-block;
+  font-size:.9rem;
+  font-weight:400;
+  line-height:1;
+}
+#programs .program-ring-item.is-active .program-face-front{
+  border-color:rgba(231,185,92,.64);
+  box-shadow:0 34px 86px rgba(0,0,0,.58), 0 0 0 1px rgba(201,153,58,.32), 0 0 56px rgba(201,153,58,.17), inset 0 1px 0 rgba(255,255,255,.18);
+}
+#programs .program-flip:focus-visible{outline:none}
+#programs .program-flip:focus-visible .program-face{outline:2px solid var(--gold3); outline-offset:4px}
+#programs .prog-card-cta{
+  position:absolute;
+  z-index:3;
+  right:1.3rem;
+  bottom:1.25rem;
+  left:1.3rem;
+  width:auto;
+  margin:0;
+  opacity:0;
+  pointer-events:none;
+  transform:translateY(10px);
+  transition:opacity .25s ease .12s, transform .35s cubic-bezier(.22,.9,.28,1) .12s, box-shadow .22s ease;
+}
+#programs .program-ring-item.is-flipped .prog-card-cta{
+  opacity:1;
+  pointer-events:auto;
+  transform:translateY(0);
+}
+#programs .program-carousel-shell .prog-card-cta:hover{transform:translateY(-3px)}
+#programs .program-carousel-controls{
+  position:relative;
+  z-index:4;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:1.05rem;
+  margin-top:.45rem;
+}
+#programs .program-carousel-arrow{
+  display:grid;
+  width:46px;
+  height:46px;
+  padding:0;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:50%;
+  color:#e6edf7;
+  background:rgba(255,255,255,.055);
+  cursor:pointer;
+  backdrop-filter:blur(10px);
+  transition:transform .22s ease, color .22s ease, border-color .22s ease, box-shadow .22s ease, background .22s ease;
+}
+#programs .program-carousel-arrow:hover{
+  color:var(--gold2);
+  border-color:var(--gold2);
+  background:rgba(201,153,58,.1);
+  box-shadow:0 12px 28px rgba(0,0,0,.36), 0 0 22px rgba(201,153,58,.12);
+  transform:translateY(-2px);
+}
+#programs .program-carousel-arrow:focus-visible,
+#programs .program-carousel-dot:focus-visible{outline:2px solid var(--gold3); outline-offset:3px}
+#programs .program-carousel-dots{display:flex; align-items:center; justify-content:center; gap:.52rem}
+#programs .program-carousel-dot{
+  width:9px;
+  height:9px;
+  padding:0;
+  border:0;
+  border-radius:99px;
+  background:rgba(255,255,255,.25);
+  cursor:pointer;
+  transition:width .3s ease, background .3s ease, box-shadow .3s ease, transform .2s ease;
+}
+#programs .program-carousel-dot:hover{background:rgba(231,185,92,.72); transform:scale(1.12)}
+#programs .program-carousel-dot.is-current{
+  width:27px;
+  background:var(--gold2);
+  box-shadow:0 0 14px rgba(201,153,58,.68);
+}
+#programs .program-carousel-count{
+  min-width:74px;
+  margin:.55rem auto 0;
+  color:var(--ink-faint);
+  font-size:.72rem;
+  font-variant-numeric:tabular-nums;
+  letter-spacing:.15em;
+  line-height:1;
+  text-align:center;
+}
+@media(max-width:640px){
+  #programs .program-carousel-stage{
+    height:484px;
+    perspective:1550px;
+    --program-card-w:276px;
+    --program-card-h:430px;
+  }
+  #programs .program-face{padding:1.25rem 1.2rem 1.15rem}
+  #programs .program-face-back{padding-bottom:4.85rem}
+  #programs .program-art-svg{max-height:168px}
+  #programs .program-carousel-controls{gap:.78rem; margin-top:.35rem}
+  #programs .program-carousel-arrow{width:42px; height:42px}
+  #programs .program-carousel-dots{gap:.4rem}
+  #programs .program-carousel-dot.is-current{width:22px}
+  #programs .prog-card-cta{right:1.15rem; bottom:1.1rem; left:1.15rem}
+}
+@media(prefers-reduced-motion:reduce){
+  #programs .program-carousel-ring{will-change:auto}
+}
+
+
+/* Ícone do Google Maps para o atalho de endereço. */
+.ci-icon.ci-google-maps-icon{
+  overflow:hidden;
+  background:linear-gradient(145deg, rgba(255,255,255,.98), rgba(228,239,255,.84));
+  border:1px solid rgba(255,255,255,.55);
+  box-shadow:0 8px 18px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.8);
+}
+.ci-google-maps-icon img{
+  display:block;
+  width:27px;
+  height:35px;
+  max-width:none;
+  object-fit:contain;
+  filter:drop-shadow(0 3px 4px rgba(0,0,0,.16));
+  transition:transform .22s ease;
+}
+.contact-item.link-active:hover .ci-google-maps-icon img{transform:scale(1.08)}
+
+
+/* Logotipo Gmail solicitado, preservando o mesmo fundo claro dos demais ícones. */
+.ci-icon.ci-gmail-icon img{
+  display:block;
+  width:30px;
+  height:24px;
+  max-width:none;
+  object-fit:contain;
+  filter:drop-shadow(0 3px 4px rgba(154,45,37,.18));
+  transition:transform .22s ease;
+}
+.contact-item.link-active:hover .ci-gmail-icon img{transform:scale(1.08)}
+
+</style>
 </head>
 <body>
+<div class="bg" aria-hidden="true"></div>
+<canvas id="quantum" aria-hidden="true"></canvas>
+<div class="orb orb-a" aria-hidden="true"></div>
+<div class="orb orb-b" aria-hidden="true"></div>
+
 
 <!-- BANDEIRAS (SVG inline funciona offline, sem CDN/emoji) -->
 <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
@@ -103,7 +1214,7 @@
       </ul>
     </div>
 
-    <a class="nav-cta" href="#application">Start Application →</a>
+    <a class="nav-cta" href="#application">Start Application</a>
   </div>
 </nav>
 
@@ -115,11 +1226,11 @@
   <div class="hero-inner">
     <div class="hero-content fade-up">
       <div class="hero-badge"><span class="badge-part">Team Estrella · NMLS #2802165 ·</span><span class="badge-part">Acrisure Mortgage · NMLS #152859</span></div>
-      <h1 class="hero-title">Your Home.<br>Your Dream.<em>Your Team.</em></h1>
+      <h1 class="hero-title"><span class="hero-title-line">Your Home.</span><span class="hero-title-line">Your Dream.</span><em class="hero-title-line">Your Team.</em></h1>
       <p class="hero-sub">Expert mortgage guidance from a local loan originator who puts your needs first. Competitive rates, fast closings, and a seamless experience from application to keys.</p>
       <div class="hero-btns">
-        <a class="btn-primary" href="#application">Apply Now →</a>
-        <a class="btn-outline" href="#programs">Explore Our Programs →</a>
+        <a class="btn-primary" href="#application">Apply Now</a>
+        <a class="btn-outline" href="#programs">Explore Our Programs</a>
       </div>
       <div class="hero-stats">
         <div class="stat"><div class="stat-num">3+</div><div class="stat-label">Languages</div></div>
@@ -128,7 +1239,7 @@
         <div class="stat"><div class="stat-num">FL</div><div class="stat-label">Licensed</div></div>
       </div>
     </div>
-    <div class="hero-card-wrap fade-up" style="animation-delay:.2s">
+    <div class="hero-card-wrap fade-up hero-platform" style="animation-delay:.2s">
       <div class="hero-rate-card hero-contact-card">
         <div class="hrc-profile">
           <img class="hrc-avatar" src="nilo-avatar.jpg" alt="Nilo Estrella — Mortgage Loan Originator">
@@ -139,14 +1250,22 @@
         </div>
         <a class="hrc-row" href="tel:+19495197902"><span class="hrc-prog">Phone</span><span class="hrc-rate hrc-val">+1 (949) 519-7902</span></a>
         <a class="hrc-row" href="https://wa.me/19495197902" target="_blank" rel="noopener" data-lang-link="waContact"><span class="hrc-prog">WhatsApp</span><span class="hrc-rate hrc-val">Chat now</span></a>
-        <a class="hrc-row" href="mailto:nestrella@acrisuremortgage.com" data-lang-link="mailContact"><span class="hrc-prog">Email</span><span class="hrc-rate hrc-val" style="font-size:.78rem">nestrella@acrisuremortgage.com</span></a>
+        <a class="hrc-row" href="/cdn-cgi/l/email-protection#5b353e282f293e37373a1b3a382932282e293e3634292f3c3a3c3e75383436" data-lang-link="mailContact"><span class="hrc-prog">Email</span><span class="hrc-rate hrc-val" style="font-size:.78rem"><span class="__cf_email__" data-cfemail="721c17010600171e1e13321311001b010700171f1d0006151315175c111d1f">[email&#160;protected]</span></span></a>
         <div class="hrc-row"><span class="hrc-prog">Office</span><span class="hrc-rate hrc-val">Winter Garden, FL</span></div>
         <div class="hrc-updated">132 W Plant St, Suite 210 · Winter Garden, FL 34787</div>
         <div class="hrc-actions">
-          <a class="btn-primary" href="#application">Start Application →</a>
+          <a class="btn-primary" href="#application">Start Application</a>
           <a class="btn-portal" href="https://acrisuremortgage.com/nestrella/" target="_blank" rel="noopener">Acrisure secure portal ↗</a>
         </div>
         <div class="hrc-nmls">Nilo Estrella · NMLS #2802165<br>Acrisure Mortgage, LLC · NMLS #152859</div>
+        <div class="hrc-equal-housing" role="note" aria-label="Equal Housing Lender">
+          <svg viewBox="0 0 34 37" aria-hidden="true" focusable="false">
+            <path d="M17 .8 0 15v2.4h3.4V36h27.2V17.4H34V15L17 .8Z" fill="currentColor"/>
+            <rect x="10.5" y="17.5" width="13" height="3.4" fill="#081322"/>
+            <rect x="10.5" y="24" width="13" height="3.4" fill="#081322"/>
+          </svg>
+          <span>Equal Housing Lender</span>
+        </div>
       </div>
     </div>
   </div>
@@ -160,37 +1279,112 @@
       <h2 class="section-title" style="color:var(--white)">The Premier Difference</h2>
       <p class="section-sub" style="color:rgba(255,255,255,.5)">We're not a call center. We're your dedicated local mortgage partner from start to finish.</p>
     </div>
-    <div class="why-grid">
-      <div class="why-card fade-up">
-        <div class="why-num">01</div>
-        <div class="why-title">Local Expertise</div>
-        <div class="why-desc">Deep knowledge of the Central Florida market, local builders, and community programs others miss.</div>
+    <div class="why-grid why-carousel-shell fade-up">
+      <div class="why-carousel-stage" id="whyCarouselStage">
+        <div class="why-carousel-ring" id="whyCarouselRing">
+        <button type="button" class="why-card why-ring-item" data-why-index="0" aria-label="Local Expertise" aria-pressed="false">
+          <span class="why-flip">
+            <span class="why-face why-face-front">
+              <span class="why-num">01</span>
+              <span class="why-title">Local Expertise</span>
+              <span class="why-card-hint">Click to see details</span>
+            </span>
+            <span class="why-face why-face-back" aria-hidden="true">
+              <span class="why-num">01</span>
+              <span class="why-desc">Deep knowledge of the Central Florida market, local builders, and community programs others miss.</span>
+              <span class="why-card-hint">Click to return</span>
+            </span>
+          </span>
+        </button>
+        <button type="button" class="why-card why-ring-item" data-why-index="1" aria-label="Speed You Can Count On" aria-pressed="false">
+          <span class="why-flip">
+            <span class="why-face why-face-front">
+              <span class="why-num">02</span>
+              <span class="why-title">Speed You Can Count On</span>
+              <span class="why-card-hint">Click to see details</span>
+            </span>
+            <span class="why-face why-face-back" aria-hidden="true">
+              <span class="why-num">02</span>
+              <span class="why-desc">Average close time of 21 days. Pre-approvals in 24 hours. We move as fast as you need.</span>
+              <span class="why-card-hint">Click to return</span>
+            </span>
+          </span>
+        </button>
+        <button type="button" class="why-card why-ring-item" data-why-index="2" aria-label="Transparent Pricing" aria-pressed="false">
+          <span class="why-flip">
+            <span class="why-face why-face-front">
+              <span class="why-num">03</span>
+              <span class="why-title">Transparent Pricing</span>
+              <span class="why-card-hint">Click to see details</span>
+            </span>
+            <span class="why-face why-face-back" aria-hidden="true">
+              <span class="why-num">03</span>
+              <span class="why-desc">No surprises at closing. Every fee, every cost — broken down clearly before you ever sign.</span>
+              <span class="why-card-hint">Click to return</span>
+            </span>
+          </span>
+        </button>
+        <button type="button" class="why-card why-ring-item" data-why-index="3" aria-label="Backed by Acrisure Mortgage" aria-pressed="false">
+          <span class="why-flip">
+            <span class="why-face why-face-front">
+              <span class="why-num">04</span>
+              <span class="why-title">Backed by Acrisure Mortgage</span>
+              <span class="why-card-hint">Click to see details</span>
+            </span>
+            <span class="why-face why-face-back" aria-hidden="true">
+              <span class="why-num">04</span>
+              <span class="why-desc">Team Estrella is powered by Acrisure Mortgage — a Top 10 national lender with in-house processing, underwriting and closing.</span>
+              <span class="why-card-hint">Click to return</span>
+            </span>
+          </span>
+        </button>
+        <button type="button" class="why-card why-ring-item" data-why-index="4" aria-label="Personal Guidance" aria-pressed="false">
+          <span class="why-flip">
+            <span class="why-face why-face-front">
+              <span class="why-num">05</span>
+              <span class="why-title">Personal Guidance</span>
+              <span class="why-card-hint">Click to see details</span>
+            </span>
+            <span class="why-face why-face-back" aria-hidden="true">
+              <span class="why-num">05</span>
+              <span class="why-desc">One loan officer, one phone number, always available — not a rotating team of strangers.</span>
+              <span class="why-card-hint">Click to return</span>
+            </span>
+          </span>
+        </button>
+        <button type="button" class="why-card why-ring-item" data-why-index="5" aria-label="Digital + Human" aria-pressed="false">
+          <span class="why-flip">
+            <span class="why-face why-face-front">
+              <span class="why-num">06</span>
+              <span class="why-title">Digital + Human</span>
+              <span class="why-card-hint">Click to see details</span>
+            </span>
+            <span class="why-face why-face-back" aria-hidden="true">
+              <span class="why-num">06</span>
+              <span class="why-desc">Apply online in minutes. Then get real human support every step of the way to closing.</span>
+              <span class="why-card-hint">Click to return</span>
+            </span>
+          </span>
+        </button>
+        </div>
       </div>
-      <div class="why-card fade-up">
-        <div class="why-num">02</div>
-        <div class="why-title">Speed You Can Count On</div>
-        <div class="why-desc">Average close time of 21 days. Pre-approvals in 24 hours. We move as fast as you need.</div>
+      <div class="why-carousel-controls">
+        <button type="button" class="why-carousel-arrow" id="whyCarouselPrev" aria-label="Previous card">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <div class="why-carousel-dots" id="whyCarouselDots">
+        <button type="button" class="why-carousel-dot" data-why-index="0" aria-label="Local Expertise"></button>
+        <button type="button" class="why-carousel-dot" data-why-index="1" aria-label="Speed You Can Count On"></button>
+        <button type="button" class="why-carousel-dot" data-why-index="2" aria-label="Transparent Pricing"></button>
+        <button type="button" class="why-carousel-dot" data-why-index="3" aria-label="Backed by Acrisure Mortgage"></button>
+        <button type="button" class="why-carousel-dot" data-why-index="4" aria-label="Personal Guidance"></button>
+        <button type="button" class="why-carousel-dot" data-why-index="5" aria-label="Digital + Human"></button>
+        </div>
+        <button type="button" class="why-carousel-arrow" id="whyCarouselNext" aria-label="Next card">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
       </div>
-      <div class="why-card fade-up">
-        <div class="why-num">03</div>
-        <div class="why-title">Transparent Pricing</div>
-        <div class="why-desc">No surprises at closing. Every fee, every cost — broken down clearly before you ever sign.</div>
-      </div>
-      <div class="why-card fade-up">
-        <div class="why-num">04</div>
-        <div class="why-title">Backed by Acrisure Mortgage</div>
-        <div class="why-desc">Team Estrella is powered by Acrisure Mortgage — a Top 10 national lender with in-house processing, underwriting and closing.</div>
-      </div>
-      <div class="why-card fade-up">
-        <div class="why-num">05</div>
-        <div class="why-title">Personal Guidance</div>
-        <div class="why-desc">One loan officer, one phone number, always available — not a rotating team of strangers.</div>
-      </div>
-      <div class="why-card fade-up">
-        <div class="why-num">06</div>
-        <div class="why-title">Digital + Human</div>
-        <div class="why-desc">Apply online in minutes. Then get real human support every step of the way to closing.</div>
-      </div>
+      <div class="why-carousel-count" id="whyCarouselCount" aria-live="polite">01 / 06</div>
     </div>
   </div>
 </section>
@@ -198,92 +1392,205 @@
 <!-- PROGRAMS -->
 <section id="programs">
   <div class="section-inner">
-    <div class="section-header fade-up">
+    <div class="section-header centered fade-up">
       <span class="section-tag">Loan Programs</span>
       <h2 class="section-title">Find Your Perfect Fit</h2>
-      <p class="section-sub">Whether you're buying your first home, upgrading, or investing — we have a program designed for your situation.</p>
+      <p class="section-sub">Whether you're buying your first home, upgrading, or investing, we have a program designed for your situation.</p>
     </div>
-    <div class="programs-grid">
-
-      <div class="prog-card fade-up">
-        <div class="prog-icon-wrap" style="background:#fff5e6;">🏡</div>
-        <div class="prog-title">First-Time Home Buyer</div>
-        <div class="prog-desc">Specialized programs with low down payments and down payment assistance to help you get your keys faster.</div>
-        <ul class="prog-features">
+    <div class="programs-grid program-carousel-shell fade-up">
+      <div class="program-carousel-stage" id="programCarouselStage">
+        <div class="program-carousel-ring" id="programCarouselRing">
+        <article class="prog-card program-ring-item" data-program-index="0">
+          <div class="program-flip" role="button" tabindex="0" aria-label="First-Time Home Buyer" aria-pressed="false">
+            <div class="program-face program-face-front">
+              <span class="program-card-index">01</span>
+              <span class="program-art"><svg class="program-art-svg" viewBox="0 0 240 146" fill="none" aria-hidden="true" focusable="false">
+  <path d="M31 78 100 24l69 54" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M49 68v55h102V68M83 123V88h34v35" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M168 104h40m-16-16 16 16-16 16M145 105h-17" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="140" cy="105" r="8" stroke="currentColor" stroke-width="3.5"/>
+  <path d="M66 76h19M66 88h10" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".55"/>
+  <circle cx="100" cy="24" r="5" fill="currentColor" opacity=".8"/>
+</svg></span>
+              <span class="prog-title">First-Time Home Buyer</span>
+              <span class="program-card-hint">Click to see details</span>
+            </div>
+            <div class="program-face program-face-back" aria-hidden="true">
+              <span class="program-card-index">01</span>
+              <div class="prog-desc">Specialized programs with low down payments and down payment assistance to help you get your keys faster.</div>
+              <ul class="prog-features">
           <li>Down payment as low as 3%</li>
           <li>Down payment assistance grants</li>
           <li>No first-time buyer penalty rates</li>
           <li>HomeReady® &amp; HomePossible® eligible</li>
         </ul>
-        <a class="prog-cta" href="#application">Start Application →</a>
-      </div>
-
-      <div class="prog-card fade-up">
-        <div class="prog-icon-wrap" style="background:#e6f4ff;">🔄</div>
-        <div class="prog-title">Refinance</div>
-        <div class="prog-desc">Lower your rate, reduce your term, or access your equity with a cash-out refi tailored to your goals.</div>
-        <ul class="prog-features">
+              <span class="program-card-hint">Click to return</span>
+            </div>
+          </div>
+          <a class="prog-cta prog-card-cta" href="#application">Start Application</a>
+        </article>
+        <article class="prog-card program-ring-item" data-program-index="1">
+          <div class="program-flip" role="button" tabindex="0" aria-label="Refinance" aria-pressed="false">
+            <div class="program-face program-face-front">
+              <span class="program-card-index">02</span>
+              <span class="program-art"><svg class="program-art-svg" viewBox="0 0 240 146" fill="none" aria-hidden="true" focusable="false">
+  <path d="M74 43a52 52 0 0 1 82 11" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  <path d="m151 37 7 18-19 3" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M164 101a52 52 0 0 1-83-10" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  <path d="m88 109-8-18 19-3" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M90 91 108 75l16 8 29-34" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M143 49h10v10" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="108" cy="75" r="4" fill="currentColor"/><circle cx="124" cy="83" r="4" fill="currentColor"/><circle cx="153" cy="49" r="4" fill="currentColor"/>
+</svg></span>
+              <span class="prog-title">Refinance</span>
+              <span class="program-card-hint">Click to see details</span>
+            </div>
+            <div class="program-face program-face-back" aria-hidden="true">
+              <span class="program-card-index">02</span>
+              <div class="prog-desc">Lower your rate, reduce your term, or access your equity with a cash-out refi tailored to your goals.</div>
+              <ul class="prog-features">
           <li>Rate &amp; term refinance</li>
           <li>Cash-out up to 80% LTV</li>
           <li>Streamline FHA / VA IRRRL</li>
           <li>No-cost refinance options</li>
         </ul>
-        <a class="prog-cta" href="#application">Start Application →</a>
-      </div>
-
-      <div class="prog-card fade-up">
-        <div class="prog-icon-wrap" style="background:#f0fff4;">🏗️</div>
-        <div class="prog-title">New Construction</div>
-        <div class="prog-desc">Building your dream home? We specialize in construction-to-perm loans with local builder relationships.</div>
-        <ul class="prog-features">
+              <span class="program-card-hint">Click to return</span>
+            </div>
+          </div>
+          <a class="prog-cta prog-card-cta" href="#application">Start Application</a>
+        </article>
+        <article class="prog-card program-ring-item" data-program-index="2">
+          <div class="program-flip" role="button" tabindex="0" aria-label="New Construction" aria-pressed="false">
+            <div class="program-face program-face-front">
+              <span class="program-card-index">03</span>
+              <span class="program-art"><svg class="program-art-svg" viewBox="0 0 240 146" fill="none" aria-hidden="true" focusable="false">
+  <path d="M44 122h145M72 122V70h78v52M84 70V51h55v19" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M62 35h105M83 35v87M83 35 52 77M83 35l30 42" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M157 35v30M157 65h27M171 65v18" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M96 84h13m12 0h13M96 101h13m12 0h13" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" opacity=".65"/>
+  <circle cx="198" cy="84" r="5" fill="currentColor"/>
+</svg></span>
+              <span class="prog-title">New Construction</span>
+              <span class="program-card-hint">Click to see details</span>
+            </div>
+            <div class="program-face program-face-back" aria-hidden="true">
+              <span class="program-card-index">03</span>
+              <div class="prog-desc">Building your dream home? We specialize in construction-to-perm loans with local builder relationships.</div>
+              <ul class="prog-features">
           <li>One-time close construction loans</li>
           <li>Extended rate lock options</li>
           <li>Builder incentive analysis</li>
           <li>Pre-sale &amp; spec home financing</li>
         </ul>
-        <a class="prog-cta" href="#application">Start Application →</a>
-      </div>
-
-      <div class="prog-card fade-up">
-        <div class="prog-icon-wrap" style="background:#fdf0ff;">💼</div>
-        <div class="prog-title">Investment Property</div>
-        <div class="prog-desc">Expand your portfolio. We offer DSCR loans, 1-4 unit, and portfolio lending for real estate investors.</div>
-        <ul class="prog-features">
+              <span class="program-card-hint">Click to return</span>
+            </div>
+          </div>
+          <a class="prog-cta prog-card-cta" href="#application">Start Application</a>
+        </article>
+        <article class="prog-card program-ring-item" data-program-index="3">
+          <div class="program-flip" role="button" tabindex="0" aria-label="Investment Property" aria-pressed="false">
+            <div class="program-face program-face-front">
+              <span class="program-card-index">04</span>
+              <span class="program-art"><svg class="program-art-svg" viewBox="0 0 240 146" fill="none" aria-hidden="true" focusable="false">
+  <path d="M43 121h155M54 121V83h31v38M97 121V62h33v59M142 121V42h43v79" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M61 98h17m27-19h17m27-18h29" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".6"/>
+  <path d="M45 72 83 55l28 11 55-41" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M153 25h13v13" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="83" cy="55" r="4.5" fill="currentColor"/><circle cx="111" cy="66" r="4.5" fill="currentColor"/><circle cx="166" cy="25" r="4.5" fill="currentColor"/>
+</svg></span>
+              <span class="prog-title">Investment Property</span>
+              <span class="program-card-hint">Click to see details</span>
+            </div>
+            <div class="program-face program-face-back" aria-hidden="true">
+              <span class="program-card-index">04</span>
+              <div class="prog-desc">Expand your portfolio. We offer DSCR loans, 1-4 unit, and portfolio lending for real estate investors.</div>
+              <ul class="prog-features">
           <li>DSCR loans (no personal income)</li>
           <li>Foreign Investors</li>
           <li>1-4 unit residential</li>
           <li>Short-term rental eligible</li>
           <li>Portfolio &amp; blanket loans</li>
         </ul>
-        <a class="prog-cta" href="#application">Start Application →</a>
-      </div>
-
-      <div class="prog-card fade-up">
-        <div class="prog-icon-wrap" style="background:#e6fff6;">🏦</div>
-        <div class="prog-title">Jumbo Loans</div>
-        <div class="prog-desc">High-value property financing beyond conventional limits, with competitive rates for qualified borrowers.</div>
-        <ul class="prog-features">
+              <span class="program-card-hint">Click to return</span>
+            </div>
+          </div>
+          <a class="prog-cta prog-card-cta" href="#application">Start Application</a>
+        </article>
+        <article class="prog-card program-ring-item" data-program-index="4">
+          <div class="program-flip" role="button" tabindex="0" aria-label="Jumbo Loans" aria-pressed="false">
+            <div class="program-face program-face-front">
+              <span class="program-card-index">05</span>
+              <span class="program-art"><svg class="program-art-svg" viewBox="0 0 240 146" fill="none" aria-hidden="true" focusable="false">
+  <path d="M50 122h141M67 122V55h35v67M113 122V27h50v95M174 122V71h17v51" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M126 43h24m-24 16h24m-24 16h24m-24 16h24" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".6"/>
+  <path d="M62 42c12-14 36-14 48 0-12 14-36 14-48 0Z" stroke="currentColor" stroke-width="3.5"/>
+  <path d="M75 42h22M86 31v22" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="86" cy="42" r="4" fill="currentColor"/>
+</svg></span>
+              <span class="prog-title">Jumbo Loans</span>
+              <span class="program-card-hint">Click to see details</span>
+            </div>
+            <div class="program-face program-face-back" aria-hidden="true">
+              <span class="program-card-index">05</span>
+              <div class="prog-desc">High-value property financing beyond conventional limits, with competitive rates for qualified borrowers.</div>
+              <ul class="prog-features">
           <li>Loan amounts up to $3M+</li>
           <li>10% down options available</li>
           <li>Interest-only programs</li>
           <li>Asset depletion qualifying</li>
         </ul>
-        <a class="prog-cta" href="#application">Start Application →</a>
-      </div>
-
-      <div class="prog-card fade-up">
-        <div class="prog-icon-wrap" style="background:#fff0e6;">📋</div>
-        <div class="prog-title">Bank Statement Loans</div>
-        <div class="prog-desc">Self-employed and business owners — qualify using 12–24 months of bank statements instead of tax returns.</div>
-        <ul class="prog-features">
+              <span class="program-card-hint">Click to return</span>
+            </div>
+          </div>
+          <a class="prog-cta prog-card-cta" href="#application">Start Application</a>
+        </article>
+        <article class="prog-card program-ring-item" data-program-index="5">
+          <div class="program-flip" role="button" tabindex="0" aria-label="Bank Statement Loans" aria-pressed="false">
+            <div class="program-face program-face-front">
+              <span class="program-card-index">06</span>
+              <span class="program-art"><svg class="program-art-svg" viewBox="0 0 240 146" fill="none" aria-hidden="true" focusable="false">
+  <path d="M60 21h79l25 25v79H60z" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M139 21v26h25M82 65h57M82 81h38M82 97h47" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
+  <path d="M82 116v-10m16 10V94m16 22v-15m16 15V88m16 28v-9" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="176" cy="101" r="20" stroke="currentColor" stroke-width="3.5"/>
+  <path d="m167 101 6 6 12-14" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></span>
+              <span class="prog-title">Bank Statement Loans</span>
+              <span class="program-card-hint">Click to see details</span>
+            </div>
+            <div class="program-face program-face-back" aria-hidden="true">
+              <span class="program-card-index">06</span>
+              <div class="prog-desc">Self-employed and business owners — qualify using 12–24 months of bank statements instead of tax returns.</div>
+              <ul class="prog-features">
           <li>12 or 24 month bank statements</li>
           <li>Personal or business statements</li>
           <li>Loans up to $3M</li>
           <li>Purchase or refinance</li>
         </ul>
-        <a class="prog-cta" href="#application">Start Application →</a>
+              <span class="program-card-hint">Click to return</span>
+            </div>
+          </div>
+          <a class="prog-cta prog-card-cta" href="#application">Start Application</a>
+        </article>
+        </div>
       </div>
-
+      <div class="program-carousel-controls">
+        <button type="button" class="program-carousel-arrow" id="programCarouselPrev" aria-label="Previous card">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <div class="program-carousel-dots" id="programCarouselDots">
+        <button type="button" class="program-carousel-dot" data-program-index="0" aria-label="First-Time Home Buyer"></button>
+        <button type="button" class="program-carousel-dot" data-program-index="1" aria-label="Refinance"></button>
+        <button type="button" class="program-carousel-dot" data-program-index="2" aria-label="New Construction"></button>
+        <button type="button" class="program-carousel-dot" data-program-index="3" aria-label="Investment Property"></button>
+        <button type="button" class="program-carousel-dot" data-program-index="4" aria-label="Jumbo Loans"></button>
+        <button type="button" class="program-carousel-dot" data-program-index="5" aria-label="Bank Statement Loans"></button>
+        </div>
+        <button type="button" class="program-carousel-arrow" id="programCarouselNext" aria-label="Next card">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+      <div class="program-carousel-count" id="programCarouselCount" aria-live="polite">01 / 06</div>
     </div>
   </div>
 </section>
@@ -291,7 +1598,7 @@
 <!-- CALCULATOR -->
 <section id="calculator">
   <div class="section-inner">
-    <div class="section-header fade-up">
+    <div class="section-header centered fade-up">
       <span class="section-tag">Payment Estimator</span>
       <h2 class="section-title">Mortgage Calculator</h2>
       <p class="section-sub">Get an instant estimate of your monthly mortgage payment.</p>
@@ -366,7 +1673,7 @@
 
         <!-- Homeowners Insurance (auto-calculated) -->
         <div class="form-group">
-          <label class="form-label">Annual Homeowners Insurance <span style="font-weight:400;opacity:.6;">(est. 1% of home price)</span></label>
+          <label class="form-label">Annual Homeowners Insurance <span style="font-weight:400;opacity:.6;">(est. 0.5% of home price)</span></label>
           <div class="calc-rate-display">
             <span id="c-ins-auto">—</span>
           </div>
@@ -390,9 +1697,9 @@
             <span class="bv" id="c-totalint">—</span>
           </div>
         </div>
-        <div class="calc-disclaimer">For estimation purposes only — enter an estimated rate. Actual rates depend on your qualification; contact us for a personalized quote. Does not include HOA fees, flood insurance, or other costs.</div>
+        <div class="calc-disclaimer">For estimation purposes only, enter an estimated rate. Actual rates depend on your qualification; contact us for a personalized quote. Does not include HOA fees, flood insurance, or other costs.</div>
         <div class="calc-apply-btn">
-          <a class="btn-primary" href="#application" style="justify-content:center;width:100%;">Get Pre-Approved Now →</a>
+          <a class="btn-primary" href="#application" style="justify-content:center;width:100%;">Get Pre-Approved Now</a>
         </div>
       </div>
     </div>
@@ -467,7 +1774,7 @@
           </div>
           <div class="form-nav">
             <span class="step-count">Step 1 of 4</span>
-            <button class="btn-next is-disabled" id="next-1" type="button" onclick="nextStep(2)" disabled>Next: Property Info →</button>
+            <button class="btn-next is-disabled" id="next-1" type="button" onclick="nextStep(2)" disabled>Next: Property Info</button>
           </div>
         </div>
 
@@ -537,7 +1844,7 @@
           <div class="form-nav">
             <button class="btn-back" type="button" onclick="prevStep(1)">← Back</button>
             <span class="step-count">Step 2 of 4</span>
-            <button class="btn-next is-disabled" id="next-2" type="button" onclick="nextStep(3)" disabled>Next: Financial Info →</button>
+            <button class="btn-next is-disabled" id="next-2" type="button" onclick="nextStep(3)" disabled>Next: Financial Info</button>
           </div>
         </div>
 
@@ -619,7 +1926,7 @@
           <div class="form-nav">
             <button class="btn-back" type="button" onclick="prevStep(2)">← Back</button>
             <span class="step-count">Step 3 of 4</span>
-            <button class="btn-next is-disabled" id="next-3" type="button" onclick="nextStep(4)" disabled>Review Application →</button>
+            <button class="btn-next is-disabled" id="next-3" type="button" onclick="nextStep(4)" disabled>Review Application</button>
           </div>
         </div>
 
@@ -677,9 +1984,9 @@
             <h3>Application Submitted!</h3>
             <p>Thank you! We've received your application and one of our loan officers will contact you within 1 business hour to discuss your options and next steps.</p>
             <div style="background:var(--section-alt);border-radius:12px;padding:1.2rem;margin-bottom:1.5rem;">
-              <p style="font-size:.85rem;color:var(--text-mid);margin:0;line-height:1.6;">📞 <strong>Questions in the meantime?</strong> Call us at <strong>(949) 519-7902</strong> or email <strong>nestrella@acrisuremortgage.com</strong></p>
+              <p style="font-size:.85rem;color:var(--text-mid);margin:0;line-height:1.6;">📞 <strong>Questions in the meantime?</strong> Call us at <strong>(949) 519-7902</strong> or email <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d8b6bdabacaabdb4b4b998b9bbaab1abadaabdb5b7aaacbfb9bfbdf6bbb7b5">[email&#160;protected]</a></strong></p>
             </div>
-            <a class="btn-primary" href="#programs" style="display:inline-flex;">Explore Our Programs →</a>
+            <a class="btn-primary" href="#programs" style="display:inline-flex;">Explore Our Programs</a>
           </div>
         </div>
 
@@ -736,7 +2043,7 @@
       <div class="contact-info fade-up">
         <span class="section-tag">Get In Touch</span>
         <h2 class="section-title">Let's Talk Mortgages</h2>
-        <p>Ready to get started, or just have questions? We're here Monday through Saturday. No pressure, no obligation — just expert advice.</p>
+        <p>Ready to get started, or just have questions? We're here Monday through Saturday. No pressure, no obligation, just expert advice.</p>
         
         <div class="contact-items">
           <!-- PHONE -->
@@ -758,17 +2065,17 @@
           </a>
 
           <!-- EMAIL -->
-          <a href="mailto:nestrella@acrisuremortgage.com" data-lang-link="mailContact" class="contact-item link-active">
-            <div class="ci-icon">✉️</div>
+          <a href="/cdn-cgi/l/email-protection#b4dad1c7c0c6d1d8d8d5f4d5d7c6ddc7c1c6d1d9dbc6c0d3d5d3d19ad7dbd9" data-lang-link="mailContact" class="contact-item link-active">
+            <div class="ci-icon ci-gmail-icon"><img src="gmail-icon.png" alt="" aria-hidden="true"></div>
             <div>
               <div class="ci-label">Email</div>
-              <div class="ci-val">nestrella@acrisuremortgage.com</div>
+              <div class="ci-val"><span class="__cf_email__" data-cfemail="0d63687e797f6861616c4d6c6e7f647e787f6860627f796a6c6a68236e6260">[email&#160;protected]</span></div>
             </div>
           </a>
 
           <!-- OFFICE (Google Maps Direction) -->
           <a href="https://www.google.com/maps/dir/?api=1&destination=132+W+Plant+St+Suite+210+Winter+Garden+FL+34787" target="_blank" rel="noopener" class="contact-item link-active">
-            <div class="ci-icon">📍</div>
+            <div class="ci-icon ci-google-maps-icon"><img src="google-maps-icon.png" alt="" aria-hidden="true"></div>
             <div>
               <div class="ci-label">Office</div>
               <div class="ci-val">132 W Plant St, Suite 210<br>Winter Garden, FL 34787</div>
@@ -804,7 +2111,7 @@
           </select>
         </div>
         <div class="form-group" style="margin-top:1.2rem;"><label class="form-label">Message</label><textarea name="Message" class="form-textarea" id="c-msg" placeholder="Tell us more about what you need…"></textarea></div>
-        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;margin-top:1rem" onclick="sendContact(event)">Send Message →</button>
+        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;margin-top:1rem" onclick="sendContact(event)">Send Message</button>
       </form>
     </div>
   </div>
@@ -890,9 +2197,7 @@
 </footer>
 
 <!-- TOAST -->
-<div class="toast" id="toast"></div>
-
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ════════════════════════════════════════════════════════════════
    i18n — SELETOR DE IDIOMA  (Português · English · Español)
    ------------------------------------------------------------
@@ -930,14 +2235,19 @@ const I18N_DICT = {
   "Chat now": "Fale agora",
   "Send a message": "Envie uma mensagem",
   "Acrisure secure portal ↗": "Portal seguro da Acrisure ↗",
+  "Equal Housing Lender": "Credor de Habitação Igualitária",
+  "Click to see details": "Clique para ver os detalhes",
+  "Click to return": "Clique para voltar",
+  "Previous card": "Cartão anterior",
+  "Next card": "Próximo cartão",
   "Backed by Acrisure Mortgage": "Respaldo da Acrisure Mortgage",
   "Team Estrella is powered by Acrisure Mortgage — a Top 10 national lender with in-house processing, underwriting and closing.": "A Team Estrella tem o respaldo da Acrisure Mortgage — um dos 10 maiores credores dos EUA, com processamento, underwriting e fechamento internos.",
   "(estimate)": "(estimada)",
   "30 years": "30 anos",
   "15 years": "15 anos",
   "10 years": "10 anos",
-  "For estimation purposes only — enter an estimated rate. Actual rates depend on your qualification; contact us for a personalized quote. Does not include HOA fees, flood insurance, or other costs.": "Apenas para fins de estimativa — informe uma taxa estimada. As taxas reais dependem da sua qualificação; entre em contato para uma cotação personalizada. Não inclui taxas de condomínio (HOA), seguro contra enchente ou outros custos.",
-  "Explore Our Programs →": "Conheça nossos programas →",
+  "For estimation purposes only, enter an estimated rate. Actual rates depend on your qualification; contact us for a personalized quote. Does not include HOA fees, flood insurance, or other costs.": "Apenas para fins de estimativa, informe uma taxa estimada. As taxas reais dependem da sua qualificação; entre em contato para uma cotação personalizada. Não inclui taxas de condomínio (HOA), seguro contra enchente ou outros custos.",
+  "Explore Our Programs": "Conheça nossos programas",
   "Do you prefer to apply directly on Acrisure Mortgage's secure portal?": "Prefere solicitar diretamente no portal seguro da Acrisure Mortgage?",
   "Apply on the secure portal ↗": "Solicitar no portal seguro ↗",
   "Terms of Use": "Termos de Uso",
@@ -946,13 +2256,13 @@ const I18N_DICT = {
   "Calculator": "Calculadora",
   "Apply": "Solicitar",
   "Contact": "Contato",
-  "Start Application →": "Iniciar solicitação →",
+  "Start Application": "Iniciar solicitação",
   "NMLS Licensed · Florida": "Licença NMLS · Flórida",
   "Your Home.": "Sua casa.",
   "Your Dream.": "Seu sonho.",
   "Your Rate.": "Sua taxa.",
   "Expert mortgage guidance from a local loan originator who puts your needs first. Competitive rates, fast closings, and a seamless experience from application to keys.": "Orientação especializada em financiamento imobiliário com um consultor local que coloca as suas necessidades em primeiro lugar. Taxas competitivas, fechamentos rápidos e uma experiência sem complicação, da solicitação até as chaves.",
-  "Apply Now →": "Solicitar agora →",
+  "Apply Now": "Solicitar agora",
   "View Today's Rates": "Ver as taxas de hoje",
   "Loans Funded": "Em empréstimos liberados",
   "Families Served": "Famílias atendidas",
@@ -1006,7 +2316,7 @@ const I18N_DICT = {
   "Apply online in minutes. Then get real human support every step of the way to closing.": "Solicite online em minutos. Depois, conte com apoio humano de verdade em cada etapa até o fechamento.",
   "Loan Programs": "Programas de financiamento",
   "Find Your Perfect Fit": "Encontre a opção ideal",
-  "Whether you're buying your first home, upgrading, or investing — we have a program designed for your situation.": "Seja para comprar o primeiro imóvel, mudar para um maior ou investir — temos um programa feito para a sua situação.",
+  "Whether you're buying your first home, upgrading, or investing, we have a program designed for your situation.": "Seja para comprar o primeiro imóvel, mudar para um maior ou investir, temos um programa feito para a sua situação.",
   "First-Time Home Buyer": "Primeira compra",
   "Specialized programs with low down payments and down payment assistance to help you get your keys faster.": "Programas especializados com entrada baixa e auxílio para a entrada, para você pegar as chaves mais rápido.",
   "Down payment as low as 3%": "Entrada a partir de 3%",
@@ -1063,7 +2373,7 @@ const I18N_DICT = {
   "Annual Property Tax": "Imposto predial anual (property tax)",
   "(est. 1.75% of home price)": "(est. 1,75% do valor do imóvel)",
   "Annual Homeowners Insurance": "Seguro residencial anual",
-  "(est. 1% of home price)": "(est. 1% do valor do imóvel)",
+  "(est. 0.5% of home price)": "(est. 0,5% do valor do imóvel)",
   "Estimated Monthly Payment": "Parcela mensal estimada",
   "Principal & Interest": "Principal e juros",
   "Property Tax": "Imposto predial",
@@ -1072,7 +2382,7 @@ const I18N_DICT = {
   "Loan Amount": "Valor do empréstimo",
   "Total Interest Paid": "Total de juros pagos",
   "Estimates only. Does not include HOA fees, flood insurance, or other costs. Contact us for an accurate Loan Estimate.": "Apenas estimativas. Não inclui taxas de HOA, seguro contra enchentes ou outros custos. Fale conosco para um Loan Estimate preciso.",
-  "Get Pre-Approved Now →": "Obter pré-aprovação agora →",
+  "Get Pre-Approved Now": "Obter pré-aprovação agora",
   "Get Started": "Comece agora",
   "Begin Your Application": "Inicie a sua solicitação",
   "Complete this short initial application and we'll reach out within 1 business hour to discuss your options.": "Preencha esta breve solicitação inicial e retornaremos em até 1 hora útil para discutir as suas opções.",
@@ -1097,7 +2407,7 @@ const I18N_DICT = {
   "Yes, with co-borrower": "Sim, com co-devedor",
   "No, just me": "Não, apenas eu",
   "Step 1 of 4": "Etapa 1 de 4",
-  "Next: Property Info →": "Próxima: dados do imóvel →",
+  "Next: Property Info": "Próxima: dados do imóvel",
   "Property Information": "Informações do imóvel",
   "Tell us about the home and what you're looking to do.": "Conte sobre o imóvel e o que você pretende fazer.",
   "Loan Purpose *": "Finalidade do empréstimo *",
@@ -1117,7 +2427,7 @@ const I18N_DICT = {
   "Property Address (or City/State if not found yet)": "Endereço do imóvel (ou cidade/estado, se ainda não encontrou)",
   "← Back": "← Voltar",
   "Step 2 of 4": "Etapa 2 de 4",
-  "Next: Financial Info →": "Próxima: dados financeiros →",
+  "Next: Financial Info": "Próxima: dados financeiros",
   "Financial Information": "Informações financeiras",
   "This helps us find the best programs for your situation.": "Isso nos ajuda a encontrar os melhores programas para a sua situação.",
   "Employment Status": "Situação profissional",
@@ -1151,7 +2461,7 @@ const I18N_DICT = {
   "Additional Comments / Questions": "Comentários ou dúvidas adicionais",
   "Anything else you'd like us to know? Questions you have? We're here to help…": "Mais alguma coisa que gostaria de nos contar? Tem dúvidas? Estamos aqui para ajudar…",
   "Step 3 of 4": "Etapa 3 de 4",
-  "Review Application →": "Revisar solicitação →",
+  "Review Application": "Revisar solicitação",
   "Review & Submit": "Revisar e enviar",
   "Please review your information before submitting.": "Confira as suas informações antes de enviar.",
   "Full Name": "Nome completo",
@@ -1190,7 +2500,7 @@ const I18N_DICT = {
   "Windermere, FL — Self-Employed": "Windermere, FL — Autônoma",
   "Get In Touch": "Fale conosco",
   "Let's Talk Mortgages": "Vamos falar de financiamento",
-  "Ready to get started, or just have questions? We're here Monday through Saturday. No pressure, no obligation — just expert advice.": "Pronto para começar ou apenas com dúvidas? Estamos aqui de segunda a sábado. Sem pressão, sem compromisso — apenas orientação de especialista.",
+  "Ready to get started, or just have questions? We're here Monday through Saturday. No pressure, no obligation, just expert advice.": "Pronto para começar ou apenas com dúvidas? Estamos aqui de segunda a sábado. Sem pressão, sem compromisso, apenas orientação de especialista.",
   "Message us now": "Envie uma mensagem agora",
   "Office": "Escritório",
   "Hours": "Horário",
@@ -1205,7 +2515,7 @@ const I18N_DICT = {
   "General Question": "Dúvida geral",
   "Message": "Mensagem",
   "Tell us more about what you need…": "Conte mais sobre o que você precisa…",
-  "Send Message →": "Enviar mensagem →",
+  "Send Message": "Enviar mensagem",
   "Team Estrella — mortgage experts serving Central Florida in Portuguese, English and Spanish. Nilo Estrella, NMLS #2802165 · Acrisure Mortgage, LLC, NMLS #152859 · Licensed in FL.": "Team Estrella — especialistas em financiamento imobiliário no Centro da Flórida, atendendo em português, inglês e espanhol. Nilo Estrella, NMLS #2802165 · Acrisure Mortgage, LLC, NMLS #152859 · Licenciado na Flórida.",
   "Conventional Loans": "Empréstimos convencionais",
   "FHA Loans": "Empréstimos FHA",
@@ -1274,14 +2584,19 @@ const I18N_DICT = {
   "Chat now": "Chatea ahora",
   "Send a message": "Envía un mensaje",
   "Acrisure secure portal ↗": "Portal seguro de Acrisure ↗",
+  "Equal Housing Lender": "Prestamista de Vivienda Equitativa",
+  "Click to see details": "Haz clic para ver los detalles",
+  "Click to return": "Haz clic para volver",
+  "Previous card": "Tarjeta anterior",
+  "Next card": "Siguiente tarjeta",
   "Backed by Acrisure Mortgage": "Respaldo de Acrisure Mortgage",
   "Team Estrella is powered by Acrisure Mortgage — a Top 10 national lender with in-house processing, underwriting and closing.": "Team Estrella cuenta con el respaldo de Acrisure Mortgage, uno de los 10 prestamistas más grandes de EE. UU., con procesamiento, underwriting y cierre internos.",
   "(estimate)": "(estimada)",
   "30 years": "30 años",
   "15 years": "15 años",
   "10 years": "10 años",
-  "For estimation purposes only — enter an estimated rate. Actual rates depend on your qualification; contact us for a personalized quote. Does not include HOA fees, flood insurance, or other costs.": "Solo para fines de estimación: ingresa una tasa estimada. Las tasas reales dependen de tu calificación; contáctanos para una cotización personalizada. No incluye cuotas de HOA, seguro contra inundaciones ni otros costos.",
-  "Explore Our Programs →": "Explora nuestros programas →",
+  "For estimation purposes only, enter an estimated rate. Actual rates depend on your qualification; contact us for a personalized quote. Does not include HOA fees, flood insurance, or other costs.": "Solo para fines de estimación, ingresa una tasa estimada. Las tasas reales dependen de tu calificación; contáctanos para una cotización personalizada. No incluye cuotas de HOA, seguro contra inundaciones ni otros costos.",
+  "Explore Our Programs": "Explora nuestros programas",
   "Do you prefer to apply directly on Acrisure Mortgage's secure portal?": "¿Prefieres solicitar directamente en el portal seguro de Acrisure Mortgage?",
   "Apply on the secure portal ↗": "Solicitar en el portal seguro ↗",
   "Terms of Use": "Términos de uso",
@@ -1290,13 +2605,13 @@ const I18N_DICT = {
   "Calculator": "Calculadora",
   "Apply": "Solicitar",
   "Contact": "Contacto",
-  "Start Application →": "Iniciar solicitud →",
+  "Start Application": "Iniciar solicitud",
   "NMLS Licensed · Florida": "Licencia NMLS · Florida",
   "Your Home.": "Tu casa.",
   "Your Dream.": "Tu sueño.",
   "Your Rate.": "Tu tasa.",
   "Expert mortgage guidance from a local loan originator who puts your needs first. Competitive rates, fast closings, and a seamless experience from application to keys.": "Asesoría experta en hipotecas de un oficial de préstamos local que pone tus necesidades primero. Tasas competitivas, cierres rápidos y una experiencia sin complicaciones, desde la solicitud hasta las llaves.",
-  "Apply Now →": "Solicitar ahora →",
+  "Apply Now": "Solicitar ahora",
   "View Today's Rates": "Ver las tasas de hoy",
   "Loans Funded": "En préstamos otorgados",
   "Families Served": "Familias atendidas",
@@ -1350,7 +2665,7 @@ const I18N_DICT = {
   "Apply online in minutes. Then get real human support every step of the way to closing.": "Solicita en línea en minutos. Luego recibe apoyo humano real en cada paso hasta el cierre.",
   "Loan Programs": "Programas de préstamo",
   "Find Your Perfect Fit": "Encuentra tu opción ideal",
-  "Whether you're buying your first home, upgrading, or investing — we have a program designed for your situation.": "Ya sea que compres tu primera casa, busques una más grande o inviertas — tenemos un programa diseñado para tu situación.",
+  "Whether you're buying your first home, upgrading, or investing, we have a program designed for your situation.": "Ya sea que compres tu primera casa, busques una más grande o inviertas, tenemos un programa diseñado para tu situación.",
   "First-Time Home Buyer": "Comprador primerizo",
   "Specialized programs with low down payments and down payment assistance to help you get your keys faster.": "Programas especializados con pagos iniciales bajos y asistencia para el pago inicial, para que recibas tus llaves más rápido.",
   "Down payment as low as 3%": "Pago inicial desde 3%",
@@ -1407,7 +2722,7 @@ const I18N_DICT = {
   "Annual Property Tax": "Impuesto predial anual",
   "(est. 1.75% of home price)": "(est. 1,75% del precio de la casa)",
   "Annual Homeowners Insurance": "Seguro de propietario anual",
-  "(est. 1% of home price)": "(est. 1% del precio de la casa)",
+  "(est. 0.5% of home price)": "(est. 0,5% del precio de la casa)",
   "Estimated Monthly Payment": "Pago mensual estimado",
   "Principal & Interest": "Capital e intereses",
   "Property Tax": "Impuesto predial",
@@ -1416,7 +2731,7 @@ const I18N_DICT = {
   "Loan Amount": "Monto del préstamo",
   "Total Interest Paid": "Total de intereses pagados",
   "Estimates only. Does not include HOA fees, flood insurance, or other costs. Contact us for an accurate Loan Estimate.": "Solo estimados. No incluye cuotas de HOA, seguro contra inundaciones u otros costos. Contáctanos para un Loan Estimate preciso.",
-  "Get Pre-Approved Now →": "Obtén tu preaprobación ahora →",
+  "Get Pre-Approved Now": "Obtén tu preaprobación ahora",
   "Get Started": "Comienza ahora",
   "Begin Your Application": "Inicia tu solicitud",
   "Complete this short initial application and we'll reach out within 1 business hour to discuss your options.": "Completa esta breve solicitud inicial y te contactaremos en 1 hora hábil para hablar de tus opciones.",
@@ -1441,7 +2756,7 @@ const I18N_DICT = {
   "Yes, with co-borrower": "Sí, con co-deudor",
   "No, just me": "No, solo yo",
   "Step 1 of 4": "Paso 1 de 4",
-  "Next: Property Info →": "Siguiente: datos de la propiedad →",
+  "Next: Property Info": "Siguiente: datos de la propiedad",
   "Property Information": "Información de la propiedad",
   "Tell us about the home and what you're looking to do.": "Cuéntanos sobre la casa y lo que quieres hacer.",
   "Loan Purpose *": "Propósito del préstamo *",
@@ -1461,7 +2776,7 @@ const I18N_DICT = {
   "Property Address (or City/State if not found yet)": "Dirección de la propiedad (o ciudad/estado si aún no la encuentras)",
   "← Back": "← Atrás",
   "Step 2 of 4": "Paso 2 de 4",
-  "Next: Financial Info →": "Siguiente: datos financieros →",
+  "Next: Financial Info": "Siguiente: datos financieros",
   "Financial Information": "Información financiera",
   "This helps us find the best programs for your situation.": "Esto nos ayuda a encontrar los mejores programas para tu situación.",
   "Employment Status": "Situación laboral",
@@ -1495,7 +2810,7 @@ const I18N_DICT = {
   "Additional Comments / Questions": "Comentarios o preguntas adicionales",
   "Anything else you'd like us to know? Questions you have? We're here to help…": "¿Algo más que quieras contarnos? ¿Tienes preguntas? Estamos aquí para ayudarte…",
   "Step 3 of 4": "Paso 3 de 4",
-  "Review Application →": "Revisar solicitud →",
+  "Review Application": "Revisar solicitud",
   "Review & Submit": "Revisar y enviar",
   "Please review your information before submitting.": "Por favor revisa tu información antes de enviar.",
   "Full Name": "Nombre completo",
@@ -1534,7 +2849,7 @@ const I18N_DICT = {
   "Windermere, FL — Self-Employed": "Windermere, FL — Por cuenta propia",
   "Get In Touch": "Ponte en contacto",
   "Let's Talk Mortgages": "Hablemos de hipotecas",
-  "Ready to get started, or just have questions? We're here Monday through Saturday. No pressure, no obligation — just expert advice.": "¿Listo para comenzar o solo tienes preguntas? Estamos aquí de lunes a sábado. Sin presiones ni compromisos — solo asesoría experta.",
+  "Ready to get started, or just have questions? We're here Monday through Saturday. No pressure, no obligation, just expert advice.": "¿Listo para comenzar o solo tienes preguntas? Estamos aquí de lunes a sábado. Sin presiones ni compromisos, solo asesoría experta.",
   "Message us now": "Escríbenos ahora",
   "Office": "Oficina",
   "Hours": "Horario",
@@ -1549,7 +2864,7 @@ const I18N_DICT = {
   "General Question": "Pregunta general",
   "Message": "Mensaje",
   "Tell us more about what you need…": "Cuéntanos más sobre lo que necesitas…",
-  "Send Message →": "Enviar mensaje →",
+  "Send Message": "Enviar mensaje",
   "Team Estrella — mortgage experts serving Central Florida in Portuguese, English and Spanish. Nilo Estrella, NMLS #2802165 · Acrisure Mortgage, LLC, NMLS #152859 · Licensed in FL.": "Team Estrella — expertos en hipotecas en el Centro de la Florida, atendiendo en portugués, inglés y español. Nilo Estrella, NMLS #2802165 · Acrisure Mortgage, LLC, NMLS #152859 · Licenciado en Florida.",
   "Conventional Loans": "Préstamos convencionales",
   "FHA Loans": "Préstamos FHA",
@@ -1985,7 +3300,7 @@ function calcUpdate() {
 
   // ── Tax & Insurance baseados no Home Price/Value ──
   const annualTax = price * 0.0175;
-  const annualIns = price * 0.01;
+  const annualIns = price * 0.005;  // estimativa anual: 0,5% do valor do imóvel
 
   document.getElementById('c-tax-auto').textContent = price > 0 ? fmtCurrency(annualTax) + tm('perYear') : '—';
   document.getElementById('c-ins-auto').textContent = price > 0 ? fmtCurrency(annualIns) + tm('perYear') : '—';
@@ -2328,6 +3643,7 @@ function sendContact() {
    ════════════════════════════════════════════════════ */
 function showToast(msg) {
   const t = document.getElementById('toast');
+  if(!t) return;
   t.textContent = msg; t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 3500);
 }
@@ -2339,7 +3655,7 @@ document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
 window.addEventListener('scroll', () => {
   const nav = document.getElementById('navbar');
-  if (nav) nav.style.height = window.scrollY > 60 ? '58px' : '68px';
+  if (nav) nav.style.boxShadow = window.scrollY > 60 ? '0 16px 44px rgba(0,0,0,.65)' : 'none';
 });
 
 /* ════════════════════════════════════════════════════
@@ -2347,5 +3663,693 @@ window.addEventListener('scroll', () => {
    ════════════════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', function () { calcUpdate(); });
 </script>
+
+<script>
+/* Fundo "quantum" — pontos dourados elegantes que reagem ao mouse/toque
+   (adaptado da analise.html, sem depender de elementos dela) */
+(function(){
+  "use strict";
+  var qCanvas = document.getElementById("quantum");
+  if (!qCanvas) return;
+  var qctx = qCanvas.getContext("2d");
+  var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+  var qW = 0, qH = 0, dots = [];
+  var pointer = { x:-9999, y:-9999, active:false };
+  var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function resizeQ(){
+    qW = window.innerWidth; qH = window.innerHeight;
+    qCanvas.width = Math.round(qW * dpr);
+    qCanvas.height = Math.round(qH * dpr);
+    qCanvas.style.width = qW + "px";
+    qCanvas.style.height = qH + "px";
+    qctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var count = Math.max(45, Math.min(110, Math.round(qW * qH / 24000)));
+    dots = [];
+    for (var i = 0; i < count; i++){
+      dots.push({
+        x: Math.random() * qW, y: Math.random() * qH,
+        vx: (Math.random() - .5) * .16, vy: (Math.random() - .5) * .16,
+        r: Math.random() * .8 + .7, a: Math.random() * .12 + .07, h: Math.random() < .25
+      });
+    }
+  }
+
+  function drawQ(){
+    qctx.clearRect(0, 0, qW, qH);
+    for (var i = 0; i < dots.length; i++){
+      var d = dots[i];
+      if (!reduced){
+        d.x += d.vx; d.y += d.vy;
+        if (pointer.active){
+          var dxp = d.x - pointer.x, dyp = d.y - pointer.y;
+          var dp2 = dxp * dxp + dyp * dyp;
+          if (dp2 < 180 * 180){
+            var dp = Math.sqrt(dp2) || 1;
+            var f = (180 - dp) / 180;
+            d.x += dxp / dp * f * 1.15; d.y += dyp / dp * f * 1.15;
+          }
+        }
+        if (d.x < -20) d.x = qW + 20; else if (d.x > qW + 20) d.x = -20;
+        if (d.y < -20) d.y = qH + 20; else if (d.y > qH + 20) d.y = -20;
+      }
+      var al = d.a;
+      if (pointer.active){
+        var dxp = d.x - pointer.x, dyp = d.y - pointer.y;
+        var dp2 = dxp * dxp + dyp * dyp;
+        if (dp2 < 150 * 150) al = Math.min(.55, d.a + (1 - dp2 / (150 * 150)) * .4);
+      }
+      qctx.beginPath();
+      qctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+      qctx.fillStyle = d.h ? "rgba(231,185,92," + al.toFixed(3) + ")" : "rgba(201,153,58," + al.toFixed(3) + ")";
+      qctx.fill();
+    }
+    qctx.lineWidth = 1;
+    for (var i = 0; i < dots.length; i++){
+      for (var j = i + 1; j < dots.length; j++){
+        var a = dots[i], b = dots[j];
+        var dx = a.x - b.x, dy = a.y - b.y, d2 = dx * dx + dy * dy;
+        if (d2 < 110 * 110){
+          var la = (1 - d2 / (110 * 110)) * .05;
+          qctx.strokeStyle = "rgba(201,153,58," + la.toFixed(3) + ")";
+          qctx.beginPath(); qctx.moveTo(a.x, a.y); qctx.lineTo(b.x, b.y); qctx.stroke();
+        }
+      }
+      if (pointer.active){
+        var dx = a.x - pointer.x, dy = a.y - pointer.y, d2 = dx * dx + dy * dy;
+        if (d2 < 150 * 150){
+          var la = (1 - d2 / (150 * 150)) * .09;
+          qctx.strokeStyle = "rgba(231,185,92," + la.toFixed(3) + ")";
+          qctx.beginPath(); qctx.moveTo(a.x, a.y); qctx.lineTo(pointer.x, pointer.y); qctx.stroke();
+        }
+      }
+    }
+  }
+
+  var qraf = null;
+  function loopQ(){ drawQ(); qraf = requestAnimationFrame(loopQ); }
+  function startQ(){ if (qraf) cancelAnimationFrame(qraf); loopQ(); }
+  function stopQ(){ if (qraf) cancelAnimationFrame(qraf); qraf = null; }
+
+  resizeQ();
+  if (reduced){ drawQ(); } else { startQ(); }
+  window.addEventListener("resize", function(){ resizeQ(); if (!reduced) drawQ(); });
+  window.addEventListener("pointermove", function(e){ pointer.x = e.clientX; pointer.y = e.clientY; pointer.active = true; });
+  window.addEventListener("pointerdown", function(e){ pointer.x = e.clientX; pointer.y = e.clientY; pointer.active = true; });
+  window.addEventListener("pointerleave", function(){ pointer.active = false; });
+  document.addEventListener("visibilitychange", function(){ if (document.hidden) stopQ(); else if (!reduced) startQ(); });
+})();
+
+</script>
+
+<script>
+/* Hero card: a plataforma flutua em repouso e afunda suavemente sob o cursor. */
+(function initHeroFloatingPlatform(){
+  var card = document.querySelector('.hero-rate-card.hero-contact-card');
+  var wrap = card && card.closest('.hero-card-wrap');
+  if (!card || !wrap) return;
+
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) return;
+
+  var active = false;
+  var raf = 0;
+  var lastX = 0;
+  var lastY = 0;
+
+  function renderTilt(){
+    raf = 0;
+    if (!active) return;
+    var rect = card.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+
+    var x = Math.max(0, Math.min(1, (lastX - rect.left) / rect.width));
+    var y = Math.max(0, Math.min(1, (lastY - rect.top) / rect.height));
+    card.style.setProperty('--hero-card-tilt-x', ((.5 - y) * 7).toFixed(2) + 'deg');
+    card.style.setProperty('--hero-card-tilt-y', ((x - .5) * 7).toFixed(2) + 'deg');
+    card.style.setProperty('--hero-card-glow-x', (x * 100).toFixed(1) + '%');
+    card.style.setProperty('--hero-card-glow-y', (y * 100).toFixed(1) + '%');
+  }
+
+  function queueTilt(e){
+    lastX = e.clientX;
+    lastY = e.clientY;
+    if (!raf) raf = window.requestAnimationFrame(renderTilt);
+  }
+
+  function resetPlatform(){
+    active = false;
+    if (raf) { window.cancelAnimationFrame(raf); raf = 0; }
+    card.classList.remove('is-hovering');
+    wrap.classList.remove('is-hovering');
+    card.style.setProperty('--hero-card-tilt-x', '0deg');
+    card.style.setProperty('--hero-card-tilt-y', '0deg');
+    card.style.setProperty('--hero-card-glow-x', '50%');
+    card.style.setProperty('--hero-card-glow-y', '0%');
+  }
+
+  card.addEventListener('pointerenter', function(e){
+    if (e.pointerType === 'touch') return;
+    active = true;
+    card.classList.add('is-hovering');
+    wrap.classList.add('is-hovering');
+    queueTilt(e);
+  }, { passive:true });
+
+  card.addEventListener('pointermove', function(e){
+    if (!active || e.pointerType === 'touch') return;
+    queueTilt(e);
+  }, { passive:true });
+
+  card.addEventListener('pointerleave', resetPlatform, { passive:true });
+  card.addEventListener('pointercancel', resetPlatform, { passive:true });
+  window.addEventListener('blur', resetPlatform, { passive:true });
+})();
+</script>
+
+
+<script>
+/* Why Us: anel 3D arrastável — clique no card central para virar e ler a descrição. */
+(function initWhyCarousel(){
+  var shell = document.querySelector('#why .why-carousel-shell');
+  var stage = document.getElementById('whyCarouselStage');
+  var ring = document.getElementById('whyCarouselRing');
+  var dots = document.getElementById('whyCarouselDots');
+  var prev = document.getElementById('whyCarouselPrev');
+  var next = document.getElementById('whyCarouselNext');
+  var count = document.getElementById('whyCarouselCount');
+  if (!shell || !stage || !ring || !dots || !prev || !next || !count) return;
+
+  var cards = Array.prototype.slice.call(ring.querySelectorAll('.why-ring-item'));
+  var dotButtons = Array.prototype.slice.call(dots.querySelectorAll('.why-carousel-dot'));
+  var total = cards.length;
+  if (!total) return;
+
+  var step = 360 / total;
+  var rotation = 0;
+  var velocity = 0;
+  var dragging = false;
+  var dragDistance = 0;
+  var lastX = 0;
+  var pressedCard = null;
+  var inertiaFrame = 0;
+  var autoVisible = true;
+  var autoplayTimer = 0;
+  var wheelLocked = false;
+  var ignoreClicksUntil = 0;
+  var AUTO_DELAY = 5000;
+  var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function pad(number){ return String(number).padStart(2, '0'); }
+  function hasFlippedCard(){
+    return cards.some(function(card){ return card.classList.contains('is-flipped'); });
+  }
+  function canAutoplay(){
+    return !reducedMotion && autoVisible && !document.hidden && !dragging && !inertiaFrame && !hasFlippedCard();
+  }
+  function clearAutoplay(){
+    if (autoplayTimer){ window.clearTimeout(autoplayTimer); autoplayTimer = 0; }
+  }
+  function scheduleAutoplay(){
+    clearAutoplay();
+    /* O timer só existe enquanto a seção está visível e nenhum verso está aberto. */
+    if (reducedMotion || !autoVisible || document.hidden || hasFlippedCard()) return;
+    autoplayTimer = window.setTimeout(function(){
+      autoplayTimer = 0;
+      if (canAutoplay()) moveTo(activeIndex() + 1);
+      scheduleAutoplay();
+    }, AUTO_DELAY);
+  }
+  function activeIndex(){
+    var normalized = ((-rotation % 360) + 360) % 360;
+    return Math.round(normalized / step) % total;
+  }
+  function cardFromTarget(target){
+    if (!target || !target.closest) return null;
+    var card = target.closest('.why-ring-item');
+    return card && ring.contains(card) ? card : null;
+  }
+  function setFlipped(card, flipped){
+    var front = card.querySelector('.why-face-front');
+    var back = card.querySelector('.why-face-back');
+    card.classList.toggle('is-flipped', flipped);
+    card.setAttribute('aria-pressed', flipped ? 'true' : 'false');
+    if (front) front.setAttribute('aria-hidden', flipped ? 'true' : 'false');
+    if (back) back.setAttribute('aria-hidden', flipped ? 'false' : 'true');
+  }
+  function closeOtherCards(keepIndex){
+    cards.forEach(function(card, index){ if (index !== keepIndex) setFlipped(card, false); });
+  }
+  function render(){
+    ring.style.transform = 'rotateY(' + rotation + 'deg)';
+    var active = activeIndex();
+    cards.forEach(function(card, index){
+      card.classList.toggle('is-active', index === active);
+      card.classList.toggle('is-dim', index !== active);
+    });
+    dotButtons.forEach(function(dot, index){
+      var current = index === active;
+      dot.classList.toggle('is-current', current);
+      dot.setAttribute('aria-current', current ? 'true' : 'false');
+    });
+    count.textContent = pad(active + 1) + ' / ' + pad(total);
+  }
+  function layout(){
+    var sample = cards[0];
+    var width = sample ? sample.offsetWidth : 260;
+    var radius = (width / 2) / Math.tan(Math.PI / total) + (width * .15);
+    cards.forEach(function(card, index){
+      card.style.transform = 'rotateY(' + (index * step) + 'deg) translateZ(' + radius + 'px)';
+    });
+  }
+  function stopInertia(){
+    if (inertiaFrame){ window.cancelAnimationFrame(inertiaFrame); inertiaFrame = 0; }
+  }
+  function moveTo(index){
+    index = ((index % total) + total) % total;
+    stopInertia();
+    closeOtherCards(index);
+    var current = ((rotation % 360) + 360) % 360;
+    var target = -index * step;
+    var delta = ((target - current + 540) % 360) - 180;
+    rotation += delta;
+    ring.style.transition = 'transform .88s cubic-bezier(.22,.9,.28,1)';
+    render();
+    window.setTimeout(function(){ ring.style.transition = ''; }, 910);
+  }
+  function spinWithInertia(){
+    stopInertia();
+    function tick(){
+      rotation += velocity;
+      velocity *= .94;
+      render();
+      if (Math.abs(velocity) > .04) inertiaFrame = window.requestAnimationFrame(tick);
+      else { inertiaFrame = 0; scheduleAutoplay(); }
+    }
+    inertiaFrame = window.requestAnimationFrame(tick);
+  }
+  function beginDrag(event){
+    if (event.pointerType === 'mouse' && event.button !== 0) return;
+    dragging = true;
+    dragDistance = 0;
+    lastX = event.clientX;
+    pressedCard = cardFromTarget(event.target);
+    velocity = 0;
+    clearAutoplay();
+    stopInertia();
+    ring.style.transition = 'none';
+    stage.classList.add('is-dragging');
+    try { stage.setPointerCapture(event.pointerId); } catch (error) {}
+  }
+  function drag(event){
+    if (!dragging) return;
+    var deltaX = event.clientX - lastX;
+    lastX = event.clientX;
+    dragDistance += Math.abs(deltaX);
+    rotation += deltaX * .30;
+    velocity = Math.max(-5, Math.min(5, deltaX * .30));
+    render();
+  }
+  function endDrag(event){
+    if (!dragging) return;
+    dragging = false;
+    stage.classList.remove('is-dragging');
+    try { stage.releasePointerCapture(event.pointerId); } catch (error) {}
+    var cardToFlip = event.type === 'pointerup' && dragDistance < 8 ? pressedCard : null;
+    pressedCard = null;
+    if (dragDistance >= 8){
+      ignoreClicksUntil = Date.now() + 340;
+      spinWithInertia();
+    } else if (cardToFlip){
+      flipOrSelect(cardToFlip);
+      ignoreClicksUntil = Date.now() + 340;
+    } else {
+      scheduleAutoplay();
+    }
+  }
+  function flipOrSelect(card){
+    if (Date.now() < ignoreClicksUntil) return;
+    var index = Number(card.getAttribute('data-why-index'));
+    if (index !== activeIndex()){
+      moveTo(index);
+      setFlipped(card, true);
+      scheduleAutoplay();
+      return;
+    }
+    var willFlip = !card.classList.contains('is-flipped');
+    closeOtherCards(index);
+    setFlipped(card, willFlip);
+    /* Ao voltar à frente, agenda uma nova rotação completa de 5 segundos. */
+    scheduleAutoplay();
+  }
+  function handleWheel(event){
+    var card = cardFromTarget(event.target);
+    /* Só sequestra o wheel quando o cursor está efetivamente sobre um card.
+       O controle manual funciona tanto na frente quanto no verso. */
+    if (!card || dragging) return;
+    var delta = Math.abs(event.deltaY) >= Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
+    if (!delta) return;
+    event.preventDefault();
+    if (wheelLocked) return;
+    wheelLocked = true;
+    clearAutoplay();
+    /* Scroll para baixo segue a ordem 01 → 02; para cima, a ordem inversa. */
+    moveTo(activeIndex() + (delta > 0 ? 1 : -1));
+    scheduleAutoplay();
+    window.setTimeout(function(){ wheelLocked = false; }, 620);
+  }
+
+  cards.forEach(function(card){
+    card.addEventListener('click', function(event){
+      event.preventDefault();
+      flipOrSelect(card);
+    });
+  });
+  stage.addEventListener('pointerdown', beginDrag, { passive:true });
+  stage.addEventListener('pointermove', drag, { passive:true });
+  stage.addEventListener('pointerup', endDrag, { passive:true });
+  stage.addEventListener('pointercancel', endDrag, { passive:true });
+  stage.addEventListener('wheel', handleWheel, { passive:false });
+
+  prev.addEventListener('click', function(){ clearAutoplay(); moveTo(activeIndex() - 1); scheduleAutoplay(); });
+  next.addEventListener('click', function(){ clearAutoplay(); moveTo(activeIndex() + 1); scheduleAutoplay(); });
+  dots.addEventListener('click', function(event){
+    var dot = event.target.closest('.why-carousel-dot');
+    if (!dot) return;
+    clearAutoplay();
+    moveTo(Number(dot.getAttribute('data-why-index')));
+    scheduleAutoplay();
+  });
+  shell.addEventListener('keydown', function(event){
+    if (event.key === 'ArrowLeft'){
+      event.preventDefault();
+      clearAutoplay();
+      moveTo(activeIndex() - 1);
+      scheduleAutoplay();
+    } else if (event.key === 'ArrowRight'){
+      event.preventDefault();
+      clearAutoplay();
+      moveTo(activeIndex() + 1);
+      scheduleAutoplay();
+    } else if (event.key === 'Escape'){
+      var active = cards[activeIndex()];
+      if (active && active.classList.contains('is-flipped')){
+        event.preventDefault();
+        setFlipped(active, false);
+        scheduleAutoplay();
+      }
+    }
+  });
+
+  if ('IntersectionObserver' in window){
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        autoVisible = entry.isIntersecting;
+        if (autoVisible) scheduleAutoplay(); else clearAutoplay();
+      });
+    }, { threshold:.22 });
+    observer.observe(stage);
+  }
+  window.addEventListener('resize', function(){ layout(); render(); }, { passive:true });
+  document.addEventListener('visibilitychange', function(){
+    if (document.hidden) clearAutoplay(); else scheduleAutoplay();
+  });
+
+  layout();
+  render();
+  scheduleAutoplay();
+})();
+</script>
+
+
+<script>
+/* Programas: carrossel 3D com arte vetorial e verso detalhado de cada opção. */
+(function initProgramsCarousel(){
+  var shell = document.querySelector('#programs .program-carousel-shell');
+  var stage = document.getElementById('programCarouselStage');
+  var ring = document.getElementById('programCarouselRing');
+  var dots = document.getElementById('programCarouselDots');
+  var prev = document.getElementById('programCarouselPrev');
+  var next = document.getElementById('programCarouselNext');
+  var count = document.getElementById('programCarouselCount');
+  if (!shell || !stage || !ring || !dots || !prev || !next || !count) return;
+
+  var cards = Array.prototype.slice.call(ring.querySelectorAll('.program-ring-item'));
+  var flipControls = Array.prototype.slice.call(ring.querySelectorAll('.program-flip'));
+  var dotButtons = Array.prototype.slice.call(dots.querySelectorAll('.program-carousel-dot'));
+  var total = cards.length;
+  if (!total) return;
+
+  var step = 360 / total;
+  var rotation = 0;
+  var velocity = 0;
+  var dragging = false;
+  var dragDistance = 0;
+  var lastX = 0;
+  var pressedCard = null;
+  var inertiaFrame = 0;
+  var autoVisible = true;
+  var autoplayTimer = 0;
+  var wheelLocked = false;
+  var ignoreClicksUntil = 0;
+  var AUTO_DELAY = 5000;
+  var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function pad(number){ return String(number).padStart(2, '0'); }
+  function hasFlippedCard(){
+    return cards.some(function(card){ return card.classList.contains('is-flipped'); });
+  }
+  function canAutoplay(){
+    return !reducedMotion && autoVisible && !document.hidden && !dragging && !inertiaFrame && !hasFlippedCard();
+  }
+  function clearAutoplay(){
+    if (autoplayTimer){ window.clearTimeout(autoplayTimer); autoplayTimer = 0; }
+  }
+  function scheduleAutoplay(){
+    clearAutoplay();
+    /* O timer só existe enquanto a seção está visível e nenhum verso está aberto. */
+    if (reducedMotion || !autoVisible || document.hidden || hasFlippedCard()) return;
+    autoplayTimer = window.setTimeout(function(){
+      autoplayTimer = 0;
+      if (canAutoplay()) moveTo(activeIndex() + 1);
+      scheduleAutoplay();
+    }, AUTO_DELAY);
+  }
+  function activeIndex(){
+    var normalized = ((-rotation % 360) + 360) % 360;
+    return Math.round(normalized / step) % total;
+  }
+  function cardFromTarget(target){
+    if (!target || !target.closest) return null;
+    var card = target.closest('.program-ring-item');
+    return card && ring.contains(card) ? card : null;
+  }
+  function setFlipped(card, flipped){
+    var control = card.querySelector('.program-flip');
+    var front = card.querySelector('.program-face-front');
+    var back = card.querySelector('.program-face-back');
+    card.classList.toggle('is-flipped', flipped);
+    if (control) control.setAttribute('aria-pressed', flipped ? 'true' : 'false');
+    if (front) front.setAttribute('aria-hidden', flipped ? 'true' : 'false');
+    if (back) back.setAttribute('aria-hidden', flipped ? 'false' : 'true');
+  }
+  function closeOtherCards(keepIndex){
+    cards.forEach(function(card, index){ if (index !== keepIndex) setFlipped(card, false); });
+  }
+  function render(){
+    ring.style.transform = 'rotateY(' + rotation + 'deg)';
+    var active = activeIndex();
+    cards.forEach(function(card, index){
+      card.classList.toggle('is-active', index === active);
+      card.classList.toggle('is-dim', index !== active);
+    });
+    dotButtons.forEach(function(dot, index){
+      var current = index === active;
+      dot.classList.toggle('is-current', current);
+      dot.setAttribute('aria-current', current ? 'true' : 'false');
+    });
+    count.textContent = pad(active + 1) + ' / ' + pad(total);
+  }
+  function layout(){
+    var sample = cards[0];
+    var width = sample ? sample.offsetWidth : 300;
+    var radius = (width / 2) / Math.tan(Math.PI / total) + (width * .15);
+    cards.forEach(function(card, index){
+      card.style.transform = 'rotateY(' + (index * step) + 'deg) translateZ(' + radius + 'px)';
+    });
+  }
+  function stopInertia(){
+    if (inertiaFrame){ window.cancelAnimationFrame(inertiaFrame); inertiaFrame = 0; }
+  }
+  function moveTo(index){
+    index = ((index % total) + total) % total;
+    stopInertia();
+    closeOtherCards(index);
+    var current = ((rotation % 360) + 360) % 360;
+    var target = -index * step;
+    var delta = ((target - current + 540) % 360) - 180;
+    rotation += delta;
+    ring.style.transition = 'transform .88s cubic-bezier(.22,.9,.28,1)';
+    render();
+    window.setTimeout(function(){ ring.style.transition = ''; }, 910);
+  }
+  function spinWithInertia(){
+    stopInertia();
+    function tick(){
+      rotation += velocity;
+      velocity *= .94;
+      render();
+      if (Math.abs(velocity) > .04) inertiaFrame = window.requestAnimationFrame(tick);
+      else { inertiaFrame = 0; scheduleAutoplay(); }
+    }
+    inertiaFrame = window.requestAnimationFrame(tick);
+  }
+  function beginDrag(event){
+    if (event.pointerType === 'mouse' && event.button !== 0) return;
+    var link = event.target && event.target.closest ? event.target.closest('.prog-card-cta') : null;
+    if (link && shell.contains(link)) return;  // mantém o CTA funcional
+    dragging = true;
+    dragDistance = 0;
+    lastX = event.clientX;
+    pressedCard = cardFromTarget(event.target);
+    velocity = 0;
+    clearAutoplay();
+    stopInertia();
+    ring.style.transition = 'none';
+    stage.classList.add('is-dragging');
+    try { stage.setPointerCapture(event.pointerId); } catch (error) {}
+  }
+  function drag(event){
+    if (!dragging) return;
+    var deltaX = event.clientX - lastX;
+    lastX = event.clientX;
+    dragDistance += Math.abs(deltaX);
+    rotation += deltaX * .30;
+    velocity = Math.max(-5, Math.min(5, deltaX * .30));
+    render();
+  }
+  function endDrag(event){
+    if (!dragging) return;
+    dragging = false;
+    stage.classList.remove('is-dragging');
+    try { stage.releasePointerCapture(event.pointerId); } catch (error) {}
+    var cardToFlip = event.type === 'pointerup' && dragDistance < 8 ? pressedCard : null;
+    pressedCard = null;
+    if (dragDistance >= 8){
+      ignoreClicksUntil = Date.now() + 420;
+      spinWithInertia();
+    } else if (cardToFlip){
+      flipOrSelect(cardToFlip);
+      ignoreClicksUntil = Date.now() + 420;
+    } else {
+      scheduleAutoplay();
+    }
+  }
+  function flipOrSelect(card){
+    if (!card || Date.now() < ignoreClicksUntil) return;
+    var index = Number(card.getAttribute('data-program-index'));
+    if (index !== activeIndex()){
+      moveTo(index);
+      setFlipped(card, true);
+      scheduleAutoplay();
+      return;
+    }
+    var willFlip = !card.classList.contains('is-flipped');
+    closeOtherCards(index);
+    setFlipped(card, willFlip);
+    /* Ao voltar à frente, agenda uma nova rotação completa de 5 segundos. */
+    scheduleAutoplay();
+  }
+  function handleWheel(event){
+    var card = cardFromTarget(event.target);
+    /* Só sequestra o wheel quando o cursor está efetivamente sobre um card.
+       O controle manual funciona tanto na frente quanto no verso. */
+    if (!card || dragging) return;
+    var delta = Math.abs(event.deltaY) >= Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
+    if (!delta) return;
+    event.preventDefault();
+    if (wheelLocked) return;
+    wheelLocked = true;
+    clearAutoplay();
+    /* Scroll para baixo segue a ordem 01 → 02; para cima, a ordem inversa. */
+    moveTo(activeIndex() + (delta > 0 ? 1 : -1));
+    scheduleAutoplay();
+    window.setTimeout(function(){ wheelLocked = false; }, 620);
+  }
+
+  flipControls.forEach(function(control){
+    control.addEventListener('click', function(event){
+      event.preventDefault();
+      flipOrSelect(cardFromTarget(control));
+    });
+    control.addEventListener('keydown', function(event){
+      if (event.key === 'Enter' || event.key === ' ' || event.key === 'Spacebar'){
+        event.preventDefault();
+        flipOrSelect(cardFromTarget(control));
+      }
+    });
+  });
+  stage.addEventListener('pointerdown', beginDrag, { passive:true });
+  stage.addEventListener('pointermove', drag, { passive:true });
+  stage.addEventListener('pointerup', endDrag, { passive:true });
+  stage.addEventListener('pointercancel', endDrag, { passive:true });
+  stage.addEventListener('wheel', handleWheel, { passive:false });
+
+  prev.addEventListener('click', function(){ clearAutoplay(); moveTo(activeIndex() - 1); scheduleAutoplay(); });
+  next.addEventListener('click', function(){ clearAutoplay(); moveTo(activeIndex() + 1); scheduleAutoplay(); });
+  dots.addEventListener('click', function(event){
+    var dot = event.target.closest('.program-carousel-dot');
+    if (!dot) return;
+    clearAutoplay();
+    moveTo(Number(dot.getAttribute('data-program-index')));
+    scheduleAutoplay();
+  });
+  shell.addEventListener('keydown', function(event){
+    if (event.key === 'ArrowLeft'){
+      event.preventDefault();
+      clearAutoplay();
+      moveTo(activeIndex() - 1);
+      scheduleAutoplay();
+    } else if (event.key === 'ArrowRight'){
+      event.preventDefault();
+      clearAutoplay();
+      moveTo(activeIndex() + 1);
+      scheduleAutoplay();
+    } else if (event.key === 'Escape'){
+      var active = cards[activeIndex()];
+      if (active && active.classList.contains('is-flipped')){
+        event.preventDefault();
+        setFlipped(active, false);
+        scheduleAutoplay();
+      }
+    }
+  });
+
+  if ('IntersectionObserver' in window){
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        autoVisible = entry.isIntersecting;
+        if (autoVisible) scheduleAutoplay(); else clearAutoplay();
+      });
+    }, { threshold:.22 });
+    observer.observe(stage);
+  }
+  window.addEventListener('resize', function(){ layout(); render(); }, { passive:true });
+  document.addEventListener('visibilitychange', function(){
+    if (document.hidden) clearAutoplay(); else scheduleAutoplay();
+  });
+
+  layout();
+  render();
+  scheduleAutoplay();
+})();
+</script>
+
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a39975f98e1e58cf',t:'MTc4OTE1ODk0Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+ render();
+})();
+</script>
+
 </body>
 </html>
